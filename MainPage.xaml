@@ -35,6 +35,12 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
 
+            <Button
+                x:Name="SettingsBtn"
+                Text="Settings"
+                Clicked="SettingsBtn_Clicked"
+                HorizontalOptions="Center" />
+
         </VerticalStackLayout>
     </ScrollView>
 

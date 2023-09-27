@@ -11,17 +11,25 @@
         <Label 
             Margin="50"
             Text="   " />
-        <Label x:Name="rotatingLabel"
-               Text="ROTATING TEXT"
-               FontSize="18"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-        <Slider Maximum="360"
-                WidthRequest="250"
-                ValueChanged="OnSliderValueChanged" />
-        <Label x:Name="displayLabel"
-               Text="(uninitialized)"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
+        <Label 
+            x:Name="rotatingLabel"
+            Text="ROTATING TEXT"
+            FontSize="18"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+        <Slider 
+            Maximum="360"
+            WidthRequest="250"
+            ValueChanged="OnSliderValueChanged" />
+        <Label 
+            x:Name="displayLabel"
+            Text="(uninitialized)"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+
+        <Label 
+            x:Name="JsonResult"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

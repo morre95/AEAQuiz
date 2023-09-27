@@ -15,7 +15,7 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-            <Button Text="|||" 
+            <Button Text="..." 
                 HorizontalOptions="End" 
                 VerticalOptions="Start" 
                 Margin="10"
@@ -28,11 +28,19 @@
                 HorizontalOptions="Center" />
 
            
-            <Button Text="Starta spelet" 
+            <Button Text="Singleplayer" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                Padding="20, 10"
+                FontSize="Large"
+                Clicked="SettingsBtn_Clicked"/>
+            
+            <Button Text="Multiplayer" 
                 HorizontalOptions="Center" 
                 VerticalOptions="Center"
                 Padding="20, 10"
                 FontSize="Large"/>
+
 
 
         </VerticalStackLayout>

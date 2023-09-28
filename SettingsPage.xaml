@@ -36,6 +36,10 @@
         Maximum="50"
         WidthRequest="250"
         ValueChanged="OnSliderValueChanged" />
+        <Label x:Name="displayLabel"
+            Text="0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
 
         <Label 
             Margin="10"
@@ -55,10 +59,7 @@
     HorizontalOptions="Center"
     VerticalOptions="Center" />
 
-        <Label x:Name="displayLabel"
-       Text="0"
-       HorizontalOptions="Center"
-       VerticalOptions="Center" />
+
 
         <Button Text="Play" 
                 HorizontalOptions="Center" 

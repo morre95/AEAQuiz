@@ -7,11 +7,15 @@ namespace AEAQuiz
             InitializeComponent();
         }
 
-        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
+        private void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            double value = args.NewValue;
-            rotatingLabel.Rotation = value;
-            displayLabel.Text = String.Format("The Slider value is {0}", value);
+            //Avrunda värdet från slidern
+            var roundedValue = Math.Round(e.NewValue);
+
+            integerSlider.Value = roundedValue;
+
+            displayLabel.Text = roundedValue.ToString();
+            //TODO: 
         }
     }
 }

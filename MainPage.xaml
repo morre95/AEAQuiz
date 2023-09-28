@@ -15,7 +15,11 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
+<<<<<<< HEAD
+            <Button Text="..." 
+=======
             <Button Text="|||" 
+>>>>>>> c72e196 (Gui förstasida. ny bakgrund, rensat från andra knappar och tillagt settings i top höger.)
                 HorizontalOptions="End" 
                 VerticalOptions="Start" 
                 Margin="10"
@@ -28,12 +32,27 @@
                 HorizontalOptions="Center" />
 
            
+<<<<<<< HEAD
+            <Button Text="Singleplayer" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                Padding="20, 10"
+                FontSize="Large"
+                Clicked="SettingsBtn_Clicked"/>
+            
+            <Button Text="Multiplayer" 
+=======
             <Button Text="Starta spelet" 
+>>>>>>> c72e196 (Gui förstasida. ny bakgrund, rensat från andra knappar och tillagt settings i top höger.)
                 HorizontalOptions="Center" 
                 VerticalOptions="Center"
                 Padding="20, 10"
                 FontSize="Large"/>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> c72e196 (Gui förstasida. ny bakgrund, rensat från andra knappar och tillagt settings i top höger.)
 
         </VerticalStackLayout>
     </ScrollView>

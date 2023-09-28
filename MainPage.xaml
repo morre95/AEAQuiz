@@ -32,13 +32,15 @@
                 HorizontalOptions="Center" 
                 VerticalOptions="Center"
                 Padding="20, 10"
-                FontSize="Large" />
+                FontSize="Large"
+                Clicked="SinglePLayerBtn_Clicked"/>
             
             <Button Text="Multiplayer" 
                 HorizontalOptions="Center" 
                 VerticalOptions="Center"
                 Padding="20, 10"
-                FontSize="Large" />
+                FontSize="Large"
+                    Clicked="MultiplayerBtn_Clicked"/>
 
 
 

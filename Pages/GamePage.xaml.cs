@@ -5,9 +5,14 @@ namespace AEAQuiz.Pages
     public partial class GamePage : ContentPage
     {
         private Quiz quiz;
+
+        private int numberOfQuestions;
+
         public GamePage()
         {
             InitializeComponent();
+
+            numberOfQuestions = AppSettings.NumQuestionsSelected;
 
             LoadTriviaQuestion();
         }
@@ -21,24 +26,30 @@ namespace AEAQuiz.Pages
                 catId,
                 (QType)AppSettings.TypeSelected,
                 (Difficulty)AppSettings.DifficultySelected,
-                AppSettings.NumQuestionsSelected);
+                numberOfQuestions);
+            
+            NextQuastion();
+        }
 
-            questonLabel.Text = quiz.Results[0].Question;
-            LabelDebug.Text = catId.ToString();
+        private void NextQuastion()
+        {
+            questonLabel.Text = quiz.Results[numberOfQuestions - 1].Question;
 
+            var answers = new List<string>
+            {
+                quiz.Results[numberOfQuestions - 1].CorrectAnswer
+            };
+            answers.AddRange(quiz.Results[numberOfQuestions - 1].IncorrectAnswers);
 
-
-
-            // TODO: Hämta data från class (Array eller list)
-            //       api anropas i gamesettingspage då man har alla atribut för apiet där.
-            // TODO: Uppdatera questonLabel.Text med den hämtade frågan
-            // TODO: Uppdatera svarsknapparnas texter med de hämtade svaren
-
-            // Binda händelsehanterare till knapparna för att hantera svar
-            answerButton1.Clicked += OnAnswerButtonClicked;
-            answerButton2.Clicked += OnAnswerButtonClicked;
-            answerButton3.Clicked += OnAnswerButtonClicked;
-            answerButton4.Clicked += OnAnswerButtonClicked;
+            Button btn;
+            Random r = new Random();
+            foreach (string answer in answers.OrderBy(x => r.Next()))
+            {
+                btn = new Button();
+                btn.Text = answer;
+                btn.Clicked += OnAnswerButtonClicked;
+                StackLayout.Add(btn);
+            }
         }
 
         private void OnAnswerButtonClicked(object sender, EventArgs e)
@@ -46,12 +57,24 @@ namespace AEAQuiz.Pages
             var selectedButton = sender as Button;
             if (selectedButton != null)
             {
-                // TODO: Rätta den svarade frågan baserat på vilken knapp som klickades
-                // Exempel:
-                // bool isCorrect = CheckAnswer(selectedButton.Text);
-                // if (isCorrect) { /* Hantera rätt svar */ }
-                // else { /* Hantera fel svar */ }
+                bool isCorrect = CheckAnswer(selectedButton.Text);
+                if (isCorrect) 
+                {
+                    numberOfQuestions--;
+                    // TODO: Hantera när frågorna är slut
+                    // TODO: Hantera när nästa fråga ska laddas så inte det bara laddas in fler knappar
+                    NextQuastion();
+                }
+                else 
+                {
+                    // TODO: Hantera fel svar
+                }
             }
+        }
+
+        private bool CheckAnswer(string answer)
+        {
+            return answer == quiz.Results[numberOfQuestions - 1].CorrectAnswer;
         }
     }
 }

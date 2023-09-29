@@ -33,16 +33,9 @@ namespace AEAQuiz.Classes
             _amount = amount;
         }
 
-        public static Quiz Create()
+        public static async Task<Quiz> Create()
         {
-            return new Quiz()._getQuestions().GetAwaiter().GetResult();
-        }
-
-        public static Quiz CreateWithToken(string token)
-        {
-            Quiz quiz = new Quiz();
-            quiz.Token = token;
-            return quiz._getQuestions().GetAwaiter().GetResult();
+            return await new Quiz()._getQuestions();
         }
 
         public static async Task<Quiz> Create(int? category, QType type, Difficulty difficulty)
@@ -55,17 +48,32 @@ namespace AEAQuiz.Classes
             return await new Quiz(category, type, difficulty, amount)._getQuestions();
         }
 
-
-        public static void DownloadAllTo(string fileName, string token)
+        // TODO: Den här metoden hänger sig på samma sät som när .GetAwaiter().GetResult(); användes i stället för await
+        public static async Task<Quiz> Create(int? category, QType type, Difficulty difficulty, int amount, string token)
         {
-            var quiz = CreateWithToken(token);
+            Quiz quiz = new Quiz(category, type, difficulty, amount);
+            quiz.Token = token;
+            return await quiz._getQuestions();
+        }
+
+        public static async Task<Quiz> CreateWithToken(string token)
+        {
+            Quiz quiz = new Quiz();
+            quiz.Token = token;
+            return await quiz._getQuestions();
+        }
+
+
+        public static async void DownloadAllTo(string fileName, string token)
+        {
+            var quiz = await CreateWithToken(token);
 
             List<List<Result>> results = new();
 
             while (quiz.ResponseCode != 4)
             {
                 results.Add(quiz.Results);
-                quiz = CreateWithToken(token);
+                quiz = await CreateWithToken(token);
             }
 
             foreach (var result in results)

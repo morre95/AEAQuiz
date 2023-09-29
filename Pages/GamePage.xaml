@@ -10,7 +10,7 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+    <StackLayout x:Name="StackLayout" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
         <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" HeightRequest="200" />
         <Label x:Name="questonLabel"
                Text="Which movie sequel had improved box office results compared to its original film?"
@@ -18,16 +18,6 @@
                HorizontalOptions="Center"
                VerticalOptions="Center" />
 
-        <Button x:Name="answerButton1" Text="Sin City: A Dame to Kill For" />
-        <Button x:Name="answerButton2" Text="Speed 2: Cruise Control" />
-        <Button x:Name="answerButton3" Text="Son of the Mask" />
-        <Button x:Name="answerButton4" Text="Toy Story 2" />
-
-        <Label x:Name="LabelDebug" />
-
-        <!--TODO:
-        Om det är en sant/falskt fråga, visa endast två knappar 
-        isVisibla false/True-->
 
     </StackLayout>
 

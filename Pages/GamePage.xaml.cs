@@ -27,7 +27,7 @@ namespace AEAQuiz.Pages
                 (QType)AppSettings.TypeSelected,
                 (Difficulty)AppSettings.DifficultySelected,
                 numberOfQuestions);
-            
+
             NextQuastion();
         }
 
@@ -40,16 +40,30 @@ namespace AEAQuiz.Pages
                 quiz.Results[numberOfQuestions - 1].CorrectAnswer
             };
             answers.AddRange(quiz.Results[numberOfQuestions - 1].IncorrectAnswers);
+            //Erik
+            //Button btn;
+            //Random r = new Random();
+            //foreach (string answer in answers.OrderBy(x => r.Next()))
+            //{
+            //    btn = new Button();
+            //    btn.Text = answer;
+            //    btn.Clicked += OnAnswerButtonClicked;
+            //    StackLayout.Add(btn);
+            //}
 
-            Button btn;
+            ////Svar i samma labels /Amir
             Random r = new Random();
-            foreach (string answer in answers.OrderBy(x => r.Next()))
-            {
-                btn = new Button();
-                btn.Text = answer;
-                btn.Clicked += OnAnswerButtonClicked;
-                StackLayout.Add(btn);
-            }
+            answers = answers.OrderBy(x => r.Next()).ToList();
+
+            // Uppdatera knapparnas texter istället för att skapa knappar
+            answerButton1.Text = answers[0];
+            answerButton2.Text = answers[1];
+            answerButton3.Text = answers[2];
+            answerButton4.Text = answers[3];
+            answerButton1.Clicked += OnAnswerButtonClicked;
+            answerButton2.Clicked += OnAnswerButtonClicked;
+            answerButton3.Clicked += OnAnswerButtonClicked;
+            answerButton4.Clicked += OnAnswerButtonClicked;
         }
 
         private void OnAnswerButtonClicked(object sender, EventArgs e)
@@ -58,14 +72,14 @@ namespace AEAQuiz.Pages
             if (selectedButton != null)
             {
                 bool isCorrect = CheckAnswer(selectedButton.Text);
-                if (isCorrect) 
+                if (isCorrect)
                 {
                     numberOfQuestions--;
                     // TODO: Hantera när frågorna är slut
                     // TODO: Hantera när nästa fråga ska laddas så inte det bara laddas in fler knappar
                     NextQuastion();
                 }
-                else 
+                else
                 {
                     // TODO: Hantera fel svar
                 }

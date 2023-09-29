@@ -47,7 +47,8 @@
             <Picker 
                 Title="Select difficulty"
                 x:Name="DificultyPicker"
-                TitleColor="White">
+                TitleColor="White"
+                SelectedIndexChanged="Dificulty_IndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Any</x:String>
@@ -62,7 +63,8 @@
                 Title="Select type"
                 x:Name="TypePicker"
                 TitleColor="White"
-                Margin="20,0,0,0">
+                Margin="20,0,0,0"
+                SelectedIndexChanged="Type_IndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Any</x:String>
@@ -73,9 +75,6 @@
             </Picker>
         </HorizontalStackLayout>
         
-
-
-
         <Button 
             Text="Play" 
             HorizontalOptions="Center" 

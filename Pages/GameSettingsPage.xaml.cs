@@ -38,6 +38,16 @@ namespace AEAQuiz.Pages
         {
             AppSettings.CategorySelected = CategoryPicker.SelectedIndex;
         }
+        
+        private void Dificulty_IndexChanged(object sender, EventArgs e)
+        {
+            AppSettings.CategorySelected = DificultyPicker.SelectedIndex;
+        }
+        
+        private void Type_IndexChanged(object sender, EventArgs e)
+        {
+            AppSettings.CategorySelected = TypePicker.SelectedIndex;
+        }
 
         private async void GameBtn_Clicked(object sender, EventArgs e)
         {

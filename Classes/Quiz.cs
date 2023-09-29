@@ -19,11 +19,18 @@ namespace AEAQuiz.Classes
 
         public Quiz() { }
 
-        public Quiz(Category category, Type type, Difficulty difficulty)
+        public Quiz(int? category, QType type, Difficulty difficulty)
         {
-            _category = (int)category;
+            _category = category;
             _type = type.ToString().ToLower();
             _difficulty = difficulty.ToString().ToLower();
+        }
+        public Quiz(int? category, QType type, Difficulty difficulty, int amount)
+        {
+            _category = category;
+            _type = type.ToString().ToLower();
+            _difficulty = difficulty.ToString().ToLower();
+            _amount = amount;
         }
 
         public static Quiz Create()
@@ -38,9 +45,13 @@ namespace AEAQuiz.Classes
             return quiz._getQuestions().GetAwaiter().GetResult();
         }
 
-        public static Quiz Create(Category category, Type type, Difficulty difficulty)
+        public static Quiz Create(int? category, QType type, Difficulty difficulty)
         {
             return new Quiz(category, type, difficulty)._getQuestions().GetAwaiter().GetResult();
+        }
+        public static Quiz Create(int? category, QType type, Difficulty difficulty, int amount)
+        {
+            return new Quiz(category, type, difficulty, amount)._getQuestions().GetAwaiter().GetResult();
         }
 
         public static void DownloadAllTo(string fileName, string token)

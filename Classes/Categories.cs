@@ -33,9 +33,14 @@
 
         public List<string> CategorysToList { get { return _category.Values.ToList(); } }
 
-        public string GetCategoryId(int index)
+        public static int GetCategoryId(int index)
         {
-            return _category.Keys.ToList()[index];
+            string ret = new Categories()._category.Keys.ToList()[index];
+            if (ret == "any")
+            {
+                return 0;
+            }
+            return int.Parse(ret);
         }
     }
 }

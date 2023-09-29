@@ -1,6 +1,6 @@
 ﻿namespace AEAQuiz.Classes
 {
-    public enum Type
+    public enum QType
     {
         Any,
         Multiple,

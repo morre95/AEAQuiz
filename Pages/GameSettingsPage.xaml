@@ -75,6 +75,7 @@
             </Picker>
         </HorizontalStackLayout>
         
+        
         <Button 
             Text="Play" 
             HorizontalOptions="Center" 
@@ -83,6 +84,8 @@
             Padding="10, 10"
             FontSize="Medium"
             Clicked="GameBtn_Clicked"/>
+
+        
 
     </VerticalStackLayout>
 </ContentPage>

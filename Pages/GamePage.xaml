@@ -23,6 +23,8 @@
         <Button x:Name="answerButton3" Text="Son of the Mask" />
         <Button x:Name="answerButton4" Text="Toy Story 2" />
 
+        <Label x:Name="LabelDebug" />
+
         <!--TODO:
         Om det är en sant/falskt fråga, visa endast två knappar 
         isVisibla false/True-->

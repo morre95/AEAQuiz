@@ -13,10 +13,8 @@ public partial class GamePage : ContentPage
 
     private async void LoadTriviaQuestion()
     {
-        // TODO: Hämta data från API
-        // Exempel:
-        // var triviaData = await apiService.GetTriviaData();
-
+        // TODO: Hämta data från class (Array eller list)
+        //       api anropas i gamesettingspage då man har alla atribut för apiet där.
         // TODO: Uppdatera questonLabel.Text med den hämtade frågan
         // TODO: Uppdatera svarsknapparnas texter med de hämtade svaren
 

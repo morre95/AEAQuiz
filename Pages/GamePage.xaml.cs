@@ -71,8 +71,8 @@ namespace AEAQuiz.Pages
             ///////////////////////////////////////////////////////////////////////////////////////
             if (quiz.Results[numberOfQuestions - 1].Type == "boolean")
             {
-                answers.Add("True");
-                answers.Add("False");
+                //answers.Add("True");
+                //answers.Add("False");
 
                 answerButton1.Text = answers[0];
                 answerButton2.Text = answers[1];

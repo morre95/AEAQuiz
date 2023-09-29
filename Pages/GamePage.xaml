@@ -3,10 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AEAQuiz.Pages.GamePage"
              Title="GamePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FF5733" Offset="0.0"/>
+            <GradientStop Color="#3333FF" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+        <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" HeightRequest="200" />
+        <Label x:Name="questonLabel"
+               Text="Which movie sequel had improved box office results compared to its original film?"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+        <Button x:Name="answerButton1" Text="Sin City: A Dame to Kill For" />
+        <Button x:Name="answerButton2" Text="Speed 2: Cruise Control" />
+        <Button x:Name="answerButton3" Text="Son of the Mask" />
+        <Button x:Name="answerButton4" Text="Toy Story 2" />
+
+        <!--TODO:
+        Om det är en sant/falskt fråga, visa endast två knappar 
+        isVisibla false/True-->
+
+    </StackLayout>
+
 </ContentPage>

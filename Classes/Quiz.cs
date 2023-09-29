@@ -45,14 +45,16 @@ namespace AEAQuiz.Classes
             return quiz._getQuestions().GetAwaiter().GetResult();
         }
 
-        public static Quiz Create(int? category, QType type, Difficulty difficulty)
+        public static async Task<Quiz> Create(int? category, QType type, Difficulty difficulty)
         {
-            return new Quiz(category, type, difficulty)._getQuestions().GetAwaiter().GetResult();
+            return await new Quiz(category, type, difficulty)._getQuestions();
         }
-        public static Quiz Create(int? category, QType type, Difficulty difficulty, int amount)
+
+        public static async Task<Quiz> Create(int? category, QType type, Difficulty difficulty, int amount)
         {
-            return new Quiz(category, type, difficulty, amount)._getQuestions().GetAwaiter().GetResult();
+            return await new Quiz(category, type, difficulty, amount)._getQuestions();
         }
+
 
         public static void DownloadAllTo(string fileName, string token)
         {
@@ -82,11 +84,12 @@ namespace AEAQuiz.Classes
             try
             {
                 var json = await httpClient.GetStringAsync(url);
+
                 return JsonConvert.DeserializeObject<Quiz>(json)!;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error occurred: " + e.Message);
+
                 return null;
             }
         }
@@ -101,7 +104,7 @@ namespace AEAQuiz.Classes
                 if (catId == 0) url += "&category=any";
                 else url += "&category=" + catId;
             }
-            if (_type != null && _type != "any") url += "&typte=" + _type;
+            if (_type != null && _type != "any") url += "&type=" + _type;
             if (_difficulty != null && _difficulty != "any") url += "&difficulty=" + _difficulty;
             if (_token != null) url += "&token=" + _token;
             return url;

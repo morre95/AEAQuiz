@@ -1,6 +1,4 @@
 using AEAQuiz.Classes;
-using Microsoft.Maui;
-using Newtonsoft.Json.Linq;
 
 namespace AEAQuiz.Pages
 {
@@ -14,18 +12,23 @@ namespace AEAQuiz.Pages
             LoadTriviaQuestion();
         }
 
-        private async void LoadTriviaQuestion()
+
+        private async Task LoadTriviaQuestion()
         {
             int? catId = null;
             if (AppSettings.CategorySelected != 0) catId = Categories.GetCategoryId(AppSettings.CategorySelected);
-            quiz = Quiz.Create(
+            quiz = await Quiz.Create(
                 catId,
                 (QType)AppSettings.TypeSelected,
                 (Difficulty)AppSettings.DifficultySelected,
                 AppSettings.NumQuestionsSelected);
-            
+
             questonLabel.Text = quiz.Results[0].Question;
             LabelDebug.Text = catId.ToString();
+
+
+
+
             // TODO: Hämta data från class (Array eller list)
             //       api anropas i gamesettingspage då man har alla atribut för apiet där.
             // TODO: Uppdatera questonLabel.Text med den hämtade frågan

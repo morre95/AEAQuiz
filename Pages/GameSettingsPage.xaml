@@ -10,90 +10,74 @@
     </ContentPage.Background>
     <VerticalStackLayout>
 
+        <Picker 
+            Margin="0,90,0,44"
+            Title="Select category"
+            TitleColor="White"
+            x:Name="CategoryPicker"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            ItemsSource="{Binding CategorysToList}"
+            SelectedIndexChanged="Category_IndexChanged" />
 
         <Label 
-            Margin="50"
-            Text="   " />
-        <Label x:Name="selectCategory"
-           Text="Select category"
-           FontSize="18"
-           HorizontalOptions="Center"
-           VerticalOptions="Center" />
-        <Picker x:Name="CategoryPicker"
-        HorizontalOptions="Center"
-        VerticalOptions="Center">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Any</x:String>
-                    <x:String>Easy</x:String>
-                    <x:String>Normal</x:String>
-                    <x:String>Hard</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
-
-        <Label 
-        Margin="10"
-        Text="   " />
-        <Label x:Name="rotatingLabel"
-           Text="Number of questions"
-           FontSize="18"
-           HorizontalOptions="Center"
-           VerticalOptions="Center" />
-        <Slider x:Name="NumQuestionsSlider"
+            Text="Number of questions"
+            FontSize="14"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+        
+        <Slider 
+            x:Name="NumQuestionsSlider"
             Maximum="50"
+            Minimum="1"
             WidthRequest="250"
             ValueChanged="OnSliderValueChanged" />
-        <Label x:Name="displayLabel"
+        
+        <Label 
+            x:Name="displayLabel"
             Text="0"
             HorizontalOptions="Center"
             VerticalOptions="Center" />
 
-        <Label 
+        <HorizontalStackLayout 
             Margin="10"
-            Text="   " />
-        <Label x:Name="selectDifficulty"
-            Text="Select difficulty"
-            FontSize="18"
             HorizontalOptions="Center"
-            VerticalOptions="Center" />
-        <Picker x:Name="DificultyPicker"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Any</x:String>
-                    <x:String>Easy</x:String>
-                    <x:String>Normal</x:String>
-                    <x:String>Hard</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+            VerticalOptions="Center">
 
-        <Label 
-            Margin="10"
-            Text="   " />
-        <Label x:Name="selectType"
-            Text="Select type"
-            FontSize="18"
-            HorizontalOptions="Center"
-            VerticalOptions="Center" />
+            <Picker 
+                Title="Select difficulty"
+                x:Name="DificultyPicker"
+                TitleColor="White">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        <x:String>Easy</x:String>
+                        <x:String>Normal</x:String>
+                        <x:String>Hard</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
-        <Picker x:Name="TypePicker"
-        HorizontalOptions="Center"
-        VerticalOptions="Center" >
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Any</x:String>
-                    <x:String>Multiple</x:String>
-                    <x:String>True / False</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+            <Picker
+                Title="Select type"
+                x:Name="TypePicker"
+                TitleColor="White"
+                Margin="20,0,0,0">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        <x:String>Multiple</x:String>
+                        <x:String>True / False</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </HorizontalStackLayout>
+        
 
 
 
-        <Button Text="Play" 
+        <Button 
+            Text="Play" 
             HorizontalOptions="Center" 
             VerticalOptions="Center"
             Margin="0, 10, 0, 0"

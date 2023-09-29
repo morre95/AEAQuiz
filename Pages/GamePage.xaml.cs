@@ -51,19 +51,61 @@ namespace AEAQuiz.Pages
             //    StackLayout.Add(btn);
             //}
 
-            ////Svar i samma labels /Amir
-            Random r = new Random();
-            answers = answers.OrderBy(x => r.Next()).ToList();
+            //Svar i samma labels /Amir
+            //Random r = new Random();
+            //answers = answers.OrderBy(x => r.Next()).ToList();
 
             // Uppdatera knapparnas texter istället för att skapa knappar
-            answerButton1.Text = answers[0];
-            answerButton2.Text = answers[1];
-            answerButton3.Text = answers[2];
-            answerButton4.Text = answers[3];
-            answerButton1.Clicked += OnAnswerButtonClicked;
-            answerButton2.Clicked += OnAnswerButtonClicked;
-            answerButton3.Clicked += OnAnswerButtonClicked;
-            answerButton4.Clicked += OnAnswerButtonClicked;
+
+            //answerButton1.Text = answers[0];
+            //answerButton2.Text = answers[1];
+            //answerButton3.Text = answers[2];
+            //answerButton4.Text = answers[3];
+            //answerButton1.Clicked += OnAnswerButtonClicked;
+            //answerButton2.Clicked += OnAnswerButtonClicked;
+            //answerButton3.Clicked += OnAnswerButtonClicked;
+            //answerButton4.Clicked += OnAnswerButtonClicked;
+
+            //BUG: Vid val av type true/false så laddas inte frågorna alls! VIKTIGT
+            //Såhär har jag tänkt att man ska lösa knapparna beroende på vilken sorts fråga det är
+            ///////////////////////////////////////////////////////////////////////////////////////
+            if (quiz.Results[numberOfQuestions - 1].Type == "boolean")
+            {
+                answers.Add("True");
+                answers.Add("False");
+
+                answerButton1.Text = answers[0];
+                answerButton2.Text = answers[1];
+                answerButton1.Clicked += OnAnswerButtonClicked;
+                answerButton2.Clicked += OnAnswerButtonClicked;
+
+                // Dölj de andra knapparna
+                answerButton3.IsVisible = false;
+                answerButton4.IsVisible = false;
+            }
+            else // multiple choice
+            {
+                answers.Add(quiz.Results[numberOfQuestions - 1].CorrectAnswer);
+                answers.AddRange(quiz.Results[numberOfQuestions - 1].IncorrectAnswers);
+
+                Random r = new Random();
+                answers = answers.OrderBy(x => r.Next()).ToList();
+
+                answerButton1.Text = answers[0];
+                answerButton2.Text = answers[1];
+                answerButton3.Text = answers[2];
+                answerButton4.Text = answers[3];
+
+                answerButton1.Clicked += OnAnswerButtonClicked;
+                answerButton2.Clicked += OnAnswerButtonClicked;
+                answerButton3.Clicked += OnAnswerButtonClicked;
+                answerButton4.Clicked += OnAnswerButtonClicked;
+
+                // Visa alla knappar
+                answerButton3.IsVisible = true;
+                answerButton4.IsVisible = true;
+            }
+            ///////////////////////////////////////////////////////////////////////////////////////
         }
 
         private void OnAnswerButtonClicked(object sender, EventArgs e)

@@ -41,12 +41,12 @@ namespace AEAQuiz.Pages
         
         private void Dificulty_IndexChanged(object sender, EventArgs e)
         {
-            AppSettings.CategorySelected = DificultyPicker.SelectedIndex;
+            AppSettings.DifficultySelected = DificultyPicker.SelectedIndex;
         }
         
         private void Type_IndexChanged(object sender, EventArgs e)
         {
-            AppSettings.CategorySelected = TypePicker.SelectedIndex;
+            AppSettings.TypeSelected = TypePicker.SelectedIndex;
         }
 
         private async void GameBtn_Clicked(object sender, EventArgs e)

@@ -85,8 +85,8 @@ namespace AEAQuiz.Pages
             }
             else // multiple choice
             {
-                answers.Add(quiz.Results[numberOfQuestions - 1].CorrectAnswer);
-                answers.AddRange(quiz.Results[numberOfQuestions - 1].IncorrectAnswers);
+              //  answers.Add(quiz.Results[numberOfQuestions - 1].CorrectAnswer);
+              //  answers.AddRange(quiz.Results[numberOfQuestions - 1].IncorrectAnswers);
 
                 Random r = new Random();
                 answers = answers.OrderBy(x => r.Next()).ToList();

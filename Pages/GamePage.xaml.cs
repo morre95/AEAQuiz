@@ -41,15 +41,15 @@ namespace AEAQuiz.Pages
             };
             answers.AddRange(quiz.Results[numberOfQuestions - 1].IncorrectAnswers);
             //Erik
-            //Button btn;
-            //Random r = new Random();
-            //foreach (string answer in answers.OrderBy(x => r.Next()))
-            //{
-            //    btn = new Button();
-            //    btn.Text = answer;
-            //    btn.Clicked += OnAnswerButtonClicked;
-            //    StackLayout.Add(btn);
-            //}
+            Button btn;
+            Random r = new Random();
+            foreach (string answer in answers.OrderBy(x => r.Next()))
+            {
+                btn = new Button();
+                btn.Text = answer;
+                btn.Clicked += OnAnswerButtonClicked;
+                StackLayoutQ.Add(btn);
+            }
 
             //Svar i samma labels /Amir
             //Random r = new Random();
@@ -69,7 +69,7 @@ namespace AEAQuiz.Pages
             //BUG: Vid val av type true/false så laddas inte frågorna alls! VIKTIGT
             //Såhär har jag tänkt att man ska lösa knapparna beroende på vilken sorts fråga det är
             ///////////////////////////////////////////////////////////////////////////////////////
-            if (quiz.Results[numberOfQuestions - 1].Type == "boolean")
+            /*if (quiz.Results[numberOfQuestions - 1].Type == "boolean")
             {
                 //answers.Add("True");
                 //answers.Add("False");
@@ -104,7 +104,7 @@ namespace AEAQuiz.Pages
                 // Visa alla knappar
                 answerButton3.IsVisible = true;
                 answerButton4.IsVisible = true;
-            }
+            }*/
             ///////////////////////////////////////////////////////////////////////////////////////
         }
 
@@ -117,6 +117,10 @@ namespace AEAQuiz.Pages
                 if (isCorrect)
                 {
                     numberOfQuestions--;
+                    
+                    for(int i = 0; i < StackLayoutQ.Count - 1; i++)
+                        StackLayoutQ.RemoveAt(i);
+
                     // TODO: Hantera när frågorna är slut
                     // TODO: Hantera när nästa fråga ska laddas så inte det bara laddas in fler knappar
                     NextQuastion();

@@ -40,7 +40,7 @@ namespace AEAQuiz.Pages
                 quiz.Results[numberOfQuestions - 1].CorrectAnswer
             };
             answers.AddRange(quiz.Results[numberOfQuestions - 1].IncorrectAnswers);
-            //Erik
+            // TODO: Något strular med det ibland 
             Button btn;
             Random r = new Random();
             foreach (string answer in answers.OrderBy(x => r.Next()))
@@ -116,19 +116,22 @@ namespace AEAQuiz.Pages
                 bool isCorrect = CheckAnswer(selectedButton.Text);
                 if (isCorrect)
                 {
-                    numberOfQuestions--;
-                    
-                    for(int i = 0; i < StackLayoutQ.Count - 1; i++)
-                        StackLayoutQ.RemoveAt(i);
-
-                    // TODO: Hantera när frågorna är slut
-                    // TODO: Hantera när nästa fråga ska laddas så inte det bara laddas in fler knappar
-                    NextQuastion();
+                    // TODO: Hantera rätt svar
+                    // EXEMPEL: results.CorrectAnswer(userId, questionId);
                 }
                 else
                 {
                     // TODO: Hantera fel svar
+                    // EXEMPEL: results.IncorrectAnswer(userId, questionId, (answer: default = "F you"));
                 }
+
+                numberOfQuestions--;
+                for (int i = 0; i < StackLayoutQ.Count - 1; i++) StackLayoutQ.RemoveAt(i);
+
+                // TODO: Hantera när frågorna är slut
+                // EXAMPLE: if (numberOfQuestions <= 0) skicka användaren tillbaka till en resultat sida
+                // med typ: await Navigation.PushAsync(new ResaultPage(rresults)); eller liknande
+                NextQuastion();
             }
         }
 

@@ -26,7 +26,8 @@ namespace AEAQuiz.Pages
                 catId,
                 (QType)AppSettings.TypeSelected,
                 (Difficulty)AppSettings.DifficultySelected,
-                numberOfQuestions);
+                numberOfQuestions,
+                await Token.Get());
 
             NextQuastion();
         }

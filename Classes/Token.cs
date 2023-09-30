@@ -24,23 +24,23 @@ namespace AEAQuiz.Classes
 
         private Token() { }
 
-        private string _Get()
+        private async Task<string> _Get()
         {
             if (_token != null) return _token;
-            var res = _getToken(TokenOption.Request).GetAwaiter().GetResult();
+            var res = await _getToken(TokenOption.Request);
             _token = res.Token;
             return _token;
         }
 
-        public static string Get()
+        public static async Task<string> Get()
         {
-            return Instance._Get();
+            return await Instance._Get();
         }
 
-        public static void Reset(string? token = null)
+        public static async void Reset(string? token = null)
         {
             if (token != null) Instance._token = token;
-            var res = Instance._getToken(TokenOption.Reset).GetAwaiter().GetResult();
+            await Instance._getToken(TokenOption.Reset);
         }
 
         public string GetResponceMSG(int code)

@@ -117,8 +117,13 @@ namespace AEAQuiz.Pages
                 bool isCorrect = CheckAnswer(selectedButton.Text);
                 if (isCorrect)
                 {
+                    int i = StackLayoutQ.Count;
+                    while (i > 1)
+                    {StackLayoutQ.RemoveAt(i); i--;}
                     // TODO: Hantera rätt svar
                     // EXEMPEL: results.CorrectAnswer(userId, questionId);
+                    numberOfQuestions--;
+                    NextQuastion();
                 }
                 else
                 {
@@ -126,13 +131,13 @@ namespace AEAQuiz.Pages
                     // EXEMPEL: results.IncorrectAnswer(userId, questionId, (answer: default = "F you"));
                 }
 
-                numberOfQuestions--;
-                for (int i = 0; i < StackLayoutQ.Count - 1; i++) StackLayoutQ.RemoveAt(i);
+               // numberOfQuestions--;
+               // for (int i = 0; i < StackLayoutQ.Count - 1; i++) StackLayoutQ.RemoveAt(i);
 
                 // TODO: Hantera när frågorna är slut
                 // EXAMPLE: if (numberOfQuestions <= 0) skicka användaren tillbaka till en resultat sida
                 // med typ: await Navigation.PushAsync(new ResaultPage(rresults)); eller liknande
-                NextQuastion();
+               // NextQuastion();
             }
         }
 

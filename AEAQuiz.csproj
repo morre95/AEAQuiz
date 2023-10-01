@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\loading_spinner.gif" />
 	  <None Remove="Resources\Images\questionmark.png" />
 	</ItemGroup>
 

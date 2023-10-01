@@ -19,7 +19,7 @@ namespace AEAQuiz.Pages
 
             numberOfQuestions = AppSettings.NumQuestionsSelected;
 
-            LoadTriviaQuestion();
+            _ = LoadTriviaQuestion();
         }
 
 
@@ -29,13 +29,15 @@ namespace AEAQuiz.Pages
             if (AppSettings.CategorySelected != 0) catId = Categories.GetCategoryId(AppSettings.CategorySelected);
             // TODO: Spara token i Preferences.Default.Set() och ett datum som kontrolleras förnyas efter 6 timmar 
             // TODO: Create är ett ganksa vilseledande namn. Det borde vara Fetch() eller Get() eller likande
+            ImageSource old = questionImage.Source;
+            questionImage.Source = ImageSource.FromFile("loading_spinner.gif");
             quiz = await Quiz.Create(
                 catId,
                 (QType)AppSettings.TypeSelected,
                 (Difficulty)AppSettings.DifficultySelected,
                 numberOfQuestions,
                 await Token.Get());
-
+            questionImage.Source = old;
             NextQuastion();
         }
 

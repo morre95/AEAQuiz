@@ -4,7 +4,7 @@ namespace AEAQuiz.Classes
 {
     public class Token
     {
-        private string? _token = null;
+        private string _token = null;
 
         private enum TokenOption
         {
@@ -37,7 +37,7 @@ namespace AEAQuiz.Classes
             return await Instance._Get();
         }
 
-        public static async void Reset(string? token = null)
+        public static async void Reset(string token = null)
         {
             if (token != null) Instance._token = token;
             await Instance._getToken(TokenOption.Reset);

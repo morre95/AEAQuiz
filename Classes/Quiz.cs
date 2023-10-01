@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace AEAQuiz.Classes
 {
@@ -9,10 +10,10 @@ namespace AEAQuiz.Classes
         private string _difficulty;
         private int _amount = 50;
 
-        private string? _token = null;
+        private string _token = null;
 
         [JsonIgnore]
-        public string? Token { get { return _token; } set { _token = value; } }
+        public string Token { get { return _token; } set { _token = value; } }
 
         [JsonIgnore]
         public int Amount { get { return _amount; } set { _amount = value; } }
@@ -97,7 +98,7 @@ namespace AEAQuiz.Classes
             }
             catch (Exception e)
             {
-
+                Debug.WriteLine($"Error: {e.Message}");
                 return null;
             }
         }

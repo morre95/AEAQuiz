@@ -1,5 +1,6 @@
 using AEAQuiz.Classes;
 using System.Diagnostics;
+using System.Timers;
 
 namespace AEAQuiz.Pages
 {
@@ -45,11 +46,17 @@ namespace AEAQuiz.Pages
             if (quiz.Results.Count > 0 && currentIndex < quiz.Results.Count)
             {
                 // TODO: Någon slags timer bör startas här så att användaren inte har för lång betänke tid
-                // EXEMPEL:
+                // EXEMPEL: 
                 /*if (AppSettings.UseTimerToThink)
                 {
-                    var quistionTimer = new Stopwatch();
-                    quistionTimer.Start();
+                    int sec = AppSettings.TimeToThinkSeconds;
+                    var timer = new System.Timers.Timer();
+                    timer.Interval = 1000;
+                    timer.Elapsed += (object sender, ElapsedEventArgs e) => 
+                    { 
+                        TimerLable.Text = TimeSpan.FromSeconds(sec).ToString("mm':'ss");
+                        sec--;
+                    };
                 }*/
 
                 questonLabel.Text = quiz.Results[currentIndex].Question;
@@ -72,6 +79,7 @@ namespace AEAQuiz.Pages
                     StackLayoutQ.Add(btn);
                     buttonsToDelete.Add(btn);
                 }
+
             }
 
             //Svar i samma labels /Amir

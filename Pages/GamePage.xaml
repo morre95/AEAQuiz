@@ -10,19 +10,23 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
-    <StackLayout x:Name="StackLayoutQ" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-        <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" HeightRequest="200" />
-        <Label x:Name="questonLabel"
-               Text="Which movie sequel had improved box office results compared to its original film?"
-               FontSize="18"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout x:Name="StackLayoutQ" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+            <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" HeightRequest="200" />
+            <Label x:Name="questonLabel"
+           Text="Which movie sequel had improved box office results compared to its original film?"
+           FontSize="18"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" />
             <!--Lagt till knapparna /Amir-->
-        <!--<Button x:Name="answerButton1" Text="" />-->
-        <!--<Button x:Name="answerButton2" Text="" />-->
-        <!--<Button x:Name="answerButton3" Text="" />-->
-        <!--<Button x:Name="answerButton4" Text="" />-->
-        
-    </StackLayout>
+            <!--<Button x:Name="answerButton1" Text="" />-->
+            <!--<Button x:Name="answerButton2" Text="" />-->
+            <!--<Button x:Name="answerButton3" Text="" />-->
+            <!--<Button x:Name="answerButton4" Text="" />-->
 
+        </StackLayout>
+        <StackLayout Margin="0,35,0,0">
+            <Label x:Name="DebugLabel" FontSize="32"/>
+        </StackLayout>
+    </VerticalStackLayout>
 </ContentPage>

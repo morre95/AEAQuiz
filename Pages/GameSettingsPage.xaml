@@ -8,10 +8,10 @@
             <GradientStop Color="#3333FF" Offset="1.0"/>
         </LinearGradientBrush>
     </ContentPage.Background>
-    <VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
 
         <Picker 
-            Margin="0,90,0,44"
+            Margin="0,4,0,44"
             Title="Select category"
             TitleColor="White"
             x:Name="CategoryPicker"

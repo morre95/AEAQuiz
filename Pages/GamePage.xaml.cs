@@ -8,6 +8,10 @@ namespace AEAQuiz.Pages
 
         private int numberOfQuestions;
 
+        private int currentIndex = 0;
+
+        private List<Button> buttonsToDelete;
+
         public GamePage()
         {
             InitializeComponent();
@@ -22,6 +26,8 @@ namespace AEAQuiz.Pages
         {
             int? catId = null;
             if (AppSettings.CategorySelected != 0) catId = Categories.GetCategoryId(AppSettings.CategorySelected);
+            // TODO: Spara token i Preferences.Default.Set() och ett datum som kontrolleras förnyas efter 6 timmar 
+            // TODO: Create är ett ganksa vilseledande namn. Det borde vara Fetch() eller Get() eller likande
             quiz = await Quiz.Create(
                 catId,
                 (QType)AppSettings.TypeSelected,
@@ -32,24 +38,31 @@ namespace AEAQuiz.Pages
             NextQuastion();
         }
 
+
         private void NextQuastion()
         {
-            questonLabel.Text = quiz.Results[numberOfQuestions - 1].Question;
+            if (quiz.Results.Count > 0 && currentIndex < quiz.Results.Count)
+            {
+                questonLabel.Text = quiz.Results[currentIndex].Question;
+            
+                var answers = new List<string>
+                {
+                    quiz.Results[currentIndex].CorrectAnswer
+                };
+                answers.AddRange(quiz.Results[currentIndex].IncorrectAnswers);
 
-            var answers = new List<string>
-            {
-                quiz.Results[numberOfQuestions - 1].CorrectAnswer
-            };
-            answers.AddRange(quiz.Results[numberOfQuestions - 1].IncorrectAnswers);
-            // TODO: Något strular med det ibland 
-            Button btn;
-            Random r = new Random();
-            foreach (string answer in answers.OrderBy(x => r.Next()))
-            {
-                btn = new Button();
-                btn.Text = answer;
-                btn.Clicked += OnAnswerButtonClicked;
-                StackLayoutQ.Add(btn);
+
+                buttonsToDelete = new List<Button>();
+                Button btn;
+                Random r = new Random();
+                foreach (string answer in answers.OrderBy(x => r.Next()))
+                {
+                    btn = new Button();
+                    btn.Text = answer;
+                    btn.Clicked += OnAnswerButtonClicked;
+                    StackLayoutQ.Add(btn);
+                    buttonsToDelete.Add(btn);
+                }
             }
 
             //Svar i samma labels /Amir
@@ -126,19 +139,25 @@ namespace AEAQuiz.Pages
                     // EXEMPEL: results.IncorrectAnswer(userId, questionId, (answer: default = "F you"));
                 }
 
-                numberOfQuestions--;
-                for (int i = 0; i < StackLayoutQ.Count - 1; i++) StackLayoutQ.RemoveAt(i);
-
-                // TODO: Hantera när frågorna är slut
-                // EXAMPLE: if (numberOfQuestions <= 0) skicka användaren tillbaka till en resultat sida
-                // med typ: await Navigation.PushAsync(new ResaultPage(rresults)); eller liknande
-                NextQuastion();
+                if (currentIndex < quiz.Results.Count - 1)
+                {
+                    currentIndex++;
+                    buttonsToDelete.ForEach(x => { StackLayoutQ.Remove(x); });
+                    NextQuastion();
+                } 
+                else
+                {
+                    DebugLabel.Text = "Vann jag???? Vad fick jag för resultat???? Hallå.... svara då!!!!!";
+                    // TODO: Hantera när frågorna är slut
+                    // EXAMPLE: if (numberOfQuestions <= 0) results.Save() och sedan skicka användaren tillbaka till en resultat sida
+                    // med typ: await Navigation.PushAsync(new ResaultPage(results)); eller liknande
+                }
             }
         }
 
         private bool CheckAnswer(string answer)
         {
-            return answer == quiz.Results[numberOfQuestions - 1].CorrectAnswer;
+            return answer == quiz.Results[currentIndex].CorrectAnswer;
         }
     }
 }

@@ -1,6 +1,5 @@
 using AEAQuiz.Classes;
 using System.Diagnostics;
-using System.Timers;
 
 namespace AEAQuiz.Pages
 {
@@ -50,14 +49,14 @@ namespace AEAQuiz.Pages
                 /*if (AppSettings.UseTimerToThink)
                 {
                     int sec = AppSettings.TimeToThinkSeconds;
-                    var timer = new System.Timers.Timer();
-                    timer.Interval = 1000;
-                    timer.Elapsed += (object sender, ElapsedEventArgs e) => 
-                    { 
+                    var myTimer = new Timer((e) =>
+                    {
                         TimerLable.Text = TimeSpan.FromSeconds(sec).ToString("mm':'ss");
                         sec--;
-                    };
+                    }, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
                 }*/
+
+
 
                 questonLabel.Text = quiz.Results[currentIndex].Question;
             

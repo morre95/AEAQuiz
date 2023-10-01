@@ -27,6 +27,18 @@ namespace AEAQuiz.Classes
             get { return Preferences.Default.Get(nameof(TypeSelected), 0); }
             set { Preferences.Default.Set(nameof(TypeSelected), value); }
         }
+
+        public static bool UseTimerToThink
+        {
+            get { return Preferences.Default.Get(nameof(UseTimerToThink), true); }
+            set { Preferences.Default.Set(nameof(UseTimerToThink), value); }
+        }
+
+        public static int TimeToThinkSeconds
+        {
+            get { return Preferences.Default.Get(nameof(TimeToThinkSeconds), 60); }
+            set { Preferences.Default.Set(nameof(TimeToThinkSeconds), value); }
+        }
     }
 }
 

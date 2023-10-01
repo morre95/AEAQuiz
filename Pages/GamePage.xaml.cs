@@ -1,4 +1,5 @@
 using AEAQuiz.Classes;
+using System.Diagnostics;
 
 namespace AEAQuiz.Pages
 {
@@ -43,6 +44,14 @@ namespace AEAQuiz.Pages
         {
             if (quiz.Results.Count > 0 && currentIndex < quiz.Results.Count)
             {
+                // TODO: Någon slags timer bör startas här så att användaren inte har för lång betänke tid
+                // EXEMPEL:
+                /*if (AppSettings.UseTimerToThink)
+                {
+                    var quistionTimer = new Stopwatch();
+                    quistionTimer.Start();
+                }*/
+
                 questonLabel.Text = quiz.Results[currentIndex].Question;
             
                 var answers = new List<string>

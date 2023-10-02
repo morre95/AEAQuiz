@@ -18,6 +18,7 @@
            FontSize="18"
            HorizontalOptions="Center"
            VerticalOptions="Center" />
+
             <!--Lagt till knapparna /Amir-->
             <!--<Button x:Name="answerButton1" Text="" />-->
             <!--<Button x:Name="answerButton2" Text="" />-->

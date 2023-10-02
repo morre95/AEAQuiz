@@ -9,7 +9,7 @@
 
             int imageNumber = _random.Next(1, 4);
 
-            string imagePath = $"Images/CategoryImg/{category}/{category}-{imageNumber}.png";
+            string imagePath = $"CategoryImg/{category}/{category}-{imageNumber}.png";
 
             return ImageSource.FromFile(imagePath);
         }

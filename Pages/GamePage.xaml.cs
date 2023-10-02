@@ -43,11 +43,13 @@ namespace AEAQuiz.Pages
 
         private Timer timer;
         private Timer displayTimer;
+        private ImageService imageService = new ImageService();
 
         private void NextQuastion()
         {
+
             if (quiz.Results.Count > 0 && currentIndex < quiz.Results.Count)
-            { 
+            {
                 if (AppSettings.UseTimerToThink)
                 {
                     int sec = AppSettings.TimeToThinkSeconds;
@@ -66,6 +68,9 @@ namespace AEAQuiz.Pages
                     }, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
                 }
 
+                var currentCategoryName = quiz.Results[currentIndex].Category;
+                var currentCategoryId = Categories.GetCategoryIdByName(currentCategoryName);
+                questionImage.Source = imageService.GetRandomImageForCategory(currentCategoryId);
 
                 //questonLabel.Text = quiz.Results[currentIndex].Question;
                 questonLabel.Text = WebUtility.HtmlDecode(quiz.Results[currentIndex].Question);

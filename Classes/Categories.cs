@@ -42,6 +42,19 @@
             }
             return int.Parse(ret);
         }
+        public static int GetCategoryIdByName(string categoryName)
+        {
+            var categories = new Categories()._category;
+            var key = categories.FirstOrDefault(x => x.Value == categoryName).Key;
+
+            if (key == "any" || string.IsNullOrEmpty(key))
+            {
+                return 0;
+            }
+
+            return int.Parse(key);
+        }
+
     }
 }
 

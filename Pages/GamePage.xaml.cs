@@ -30,6 +30,12 @@ namespace AEAQuiz.Pages
             // TODO: Spara token i Preferences.Default.Set() och ett datum som kontrolleras förnyas efter 6 timmar 
             // TODO: Create är ett ganksa vilseledande namn. Det borde vara Fetch() eller Get() eller likande
             ImageSource old = questionImage.Source;
+            var oldWidth = questionImage.WidthRequest;
+            var oldHeight = questionImage.HeightRequest;
+
+            // Ändra storlek och sätt spinner
+            questionImage.WidthRequest = 70; // eller 50 eller vilken storlek du vill ha för spinnern
+            questionImage.HeightRequest = 70;
             questionImage.Source = ImageSource.FromFile("loading_spinner.gif");
             quiz = await Quiz.Create(
                 catId,
@@ -38,6 +44,8 @@ namespace AEAQuiz.Pages
                 numberOfQuestions,
                 await Token.Get());
             questionImage.Source = old;
+            questionImage.WidthRequest = oldWidth;
+            questionImage.HeightRequest = oldHeight;
             NextQuastion();
         }
 

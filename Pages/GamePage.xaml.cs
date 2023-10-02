@@ -41,22 +41,30 @@ namespace AEAQuiz.Pages
             NextQuastion();
         }
 
+        private Timer timer;
+        private Timer displayTimer;
 
         private void NextQuastion()
         {
             if (quiz.Results.Count > 0 && currentIndex < quiz.Results.Count)
-            {
-                // TODO: Någon slags timer bör startas här så att användaren inte har för lång betänke tid
-                // EXEMPEL: 
-                /*if (AppSettings.UseTimerToThink)
+            { 
+                if (AppSettings.UseTimerToThink)
                 {
                     int sec = AppSettings.TimeToThinkSeconds;
-                    var myTimer = new Timer((e) =>
+
+                    timer?.Dispose();
+                    timer = new Timer(TimerCallback, null, TimeSpan.FromSeconds(sec), Timeout.InfiniteTimeSpan);
+
+                    displayTimer?.Dispose();
+                    displayTimer = new Timer((e) =>
                     {
-                        TimerLable.Text = TimeSpan.FromSeconds(sec).ToString("mm':'ss");
-                        sec--;
+                        Dispatcher.DispatchAsync(() =>
+                        {
+                            TimerLable.Text = TimeSpan.FromSeconds(sec).ToString("mm':'ss");
+                            sec--;
+                        });
                     }, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
-                }*/
+                }
 
 
                 //questonLabel.Text = quiz.Results[currentIndex].Question;
@@ -80,10 +88,27 @@ namespace AEAQuiz.Pages
                     StackLayoutQ.Add(btn);
                     buttonsToDelete.Add(btn);
                 }
-
             }
+        }
 
-
+        void TimerCallback(object state)
+        {
+            Dispatcher.DispatchAsync(() =>
+            {
+                // TODO: Fakturera detta så det blir somma som i OnAnswerButtonClicked(). Det borde fungerar enligt Erik. 
+                // Men Ari glöm inte att timer?.Dispose(); raderna om du kodare det så vi slipper minnesproblem, lol
+                if (currentIndex < quiz.Results.Count - 1)
+                {
+                    currentIndex++;
+                    buttonsToDelete.ForEach(x => { StackLayoutQ.Remove(x); });
+                    NextQuastion();
+                }
+                else
+                {
+                    timer?.Dispose();
+                    displayTimer?.Dispose();
+                }
+            });
         }
 
         private void OnAnswerButtonClicked(object sender, EventArgs e)

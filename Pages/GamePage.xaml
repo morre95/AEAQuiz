@@ -26,6 +26,7 @@
 
         </StackLayout>
         <StackLayout Margin="0,35,0,0">
+            <Label x:Name="TimerLable" />
             <Label x:Name="DebugLabel" FontSize="32"/>
         </StackLayout>
     </VerticalStackLayout>

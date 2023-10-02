@@ -149,7 +149,8 @@ namespace AEAQuiz.Pages
                     string answerText;
                     if ((double)numberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
                     else { answerText = "Not so good...."; }
-                    DebugLabel.Text = $"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}";
+                    //DebugLabel.Text = $"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}";
+                    await Navigation.PushAsync(new ResultPage($"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}"));
                     //DebugLabel.Text = "Vann jag???? Vad fick jag för resultat???? Hallå.... svara då!!!!!";
                     // TODO: Hantera när frågorna är slut
                     // EXAMPLE: if (numberOfQuestions <= 0) results.Save() och sedan skicka användaren tillbaka till en resultat sida

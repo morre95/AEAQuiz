@@ -49,6 +49,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Model\**" />
+	  <Compile Remove="Model\**" />
+	  <EmbeddedResource Remove="Model\**" />
+	  <MauiCss Remove="Model\**" />
+	  <MauiXaml Remove="Model\**" />
+	  <None Remove="Model\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\cat_10_1.png" />
 	  <None Remove="Resources\Images\cat_10_2.png" />
 	  <None Remove="Resources\Images\cat_10_3.png" />
@@ -149,13 +158,12 @@
 	  <MauiXaml Update="Pages\MutliplayerSettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ResultPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Model\" />
 	</ItemGroup>
 
 </Project>

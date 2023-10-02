@@ -1,4 +1,6 @@
-﻿namespace AEAQuiz.Classes
+﻿using System.Diagnostics;
+
+namespace AEAQuiz.Classes
 {
     public class ImageService
     {
@@ -9,8 +11,8 @@
 
             int imageNumber = _random.Next(1, 4);
 
-            string imagePath = $"CategoryImg/{category}/{category}-{imageNumber}.png";
-
+            string imagePath = $"cat_{category}_{imageNumber}.png";
+            Debug.WriteLine(imagePath);
             return ImageSource.FromFile(imagePath);
         }
     }

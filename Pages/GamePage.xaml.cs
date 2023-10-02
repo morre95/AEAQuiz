@@ -57,6 +57,9 @@ namespace AEAQuiz.Pages
                     timer?.Dispose();
                     timer = new Timer(TimerCallback, null, TimeSpan.FromSeconds(sec), Timeout.InfiniteTimeSpan);
 
+                    timerProgress.Progress = 0;
+                    timerProgress.ProgressTo(1.0, Convert.ToUInt32(sec * 1000), Easing.CubicIn);
+
                     displayTimer?.Dispose();
                     displayTimer = new Timer((e) =>
                     {
@@ -100,19 +103,7 @@ namespace AEAQuiz.Pages
         {
             Dispatcher.DispatchAsync(() =>
             {
-                // TODO: Fakturera detta så det blir somma som i OnAnswerButtonClicked(). Det borde fungerar enligt Erik. 
-                // Men Ari glöm inte att timer?.Dispose(); raderna om du kodare det så vi slipper minnesproblem, lol
-                if (currentIndex < quiz.Results.Count - 1)
-                {
-                    currentIndex++;
-                    buttonsToDelete.ForEach(x => { StackLayoutQ.Remove(x); });
-                    NextQuastion();
-                }
-                else
-                {
-                    timer?.Dispose();
-                    displayTimer?.Dispose();
-                }
+                _ = ResultOrNextCheck();
             });
         }
 
@@ -127,35 +118,33 @@ namespace AEAQuiz.Pages
                     numberOfRightAswer++;
                     selectedButton.BackgroundColor = Colors.Green;
                     await Task.Delay(500);
-                    // TODO: Hantera rätt svar
-                    // EXEMPEL: results.CorrectAnswer(userId, questionId);
                 }
                 else
                 {
                     selectedButton.BackgroundColor = Colors.Red;
                     await Task.Delay(500);
-                    // TODO: Hantera fel svar
-                    // EXEMPEL: results.IncorrectAnswer(userId, questionId, (answer: default = "F you"));
                 }
 
-                if (currentIndex < quiz.Results.Count - 1)
-                {
-                    currentIndex++;
-                    buttonsToDelete.ForEach(x => { StackLayoutQ.Remove(x); });
-                    NextQuastion();
-                }
-                else
-                {
-                    string answerText;
-                    if ((double)numberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
-                    else { answerText = "Not so good...."; }
-                    //DebugLabel.Text = $"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}";
-                    await Navigation.PushAsync(new ResultPage($"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}"));
-                    //DebugLabel.Text = "Vann jag???? Vad fick jag för resultat???? Hallå.... svara då!!!!!";
-                    // TODO: Hantera när frågorna är slut
-                    // EXAMPLE: if (numberOfQuestions <= 0) results.Save() och sedan skicka användaren tillbaka till en resultat sida
-                    // med typ: await Navigation.PushAsync(new ResaultPage(results)); eller liknande
-                }
+                await ResultOrNextCheck();
+            }
+        }
+
+        private async Task ResultOrNextCheck()
+        {
+            if (currentIndex < quiz.Results.Count - 1)
+            {
+                currentIndex++;
+                buttonsToDelete.ForEach(x => { StackLayoutQ.Remove(x); });
+                NextQuastion();
+            }
+            else
+            {
+                timer?.Dispose();
+                displayTimer?.Dispose();
+                string answerText;
+                if ((double)numberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
+                else { answerText = "Not so good...."; }
+                await Navigation.PushAsync(new ResultPage($"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}"));
             }
         }
 

@@ -19,14 +19,9 @@
            HorizontalOptions="Center"
            VerticalOptions="Center" />
 
-            <!--Lagt till knapparna /Amir-->
-            <!--<Button x:Name="answerButton1" Text="" />-->
-            <!--<Button x:Name="answerButton2" Text="" />-->
-            <!--<Button x:Name="answerButton3" Text="" />-->
-            <!--<Button x:Name="answerButton4" Text="" />-->
-
         </StackLayout>
         <StackLayout Margin="0,35,0,0">
+            <ProgressBar x:Name="timerProgress" ProgressColor="Red" />
             <Label x:Name="TimerLable" />
             <Label x:Name="DebugLabel" FontSize="32"/>
         </StackLayout>

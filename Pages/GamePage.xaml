@@ -12,7 +12,7 @@
 
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
         <StackLayout x:Name="StackLayoutQ" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-            <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" HeightRequest="200" />
+            <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="300" />
             <Label x:Name="questonLabel"
            Text="Loading..."
            FontSize="18"

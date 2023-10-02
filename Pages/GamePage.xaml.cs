@@ -7,7 +7,7 @@ namespace AEAQuiz.Pages
     {
         private Quiz quiz;
 
-        private int numberOfQuestions;
+        private int numberOfQuestions, numberOfRightAswer = 0;
 
         private int currentIndex = 0;
 
@@ -111,7 +111,7 @@ namespace AEAQuiz.Pages
             });
         }
 
-        private void OnAnswerButtonClicked(object sender, EventArgs e)
+        private async void OnAnswerButtonClicked(object sender, EventArgs e)
         {
             var selectedButton = sender as Button;
             if (selectedButton != null)
@@ -119,11 +119,16 @@ namespace AEAQuiz.Pages
                 bool isCorrect = CheckAnswer(selectedButton.Text);
                 if (isCorrect)
                 {
+                    numberOfRightAswer++;
+                    selectedButton.BackgroundColor = Colors.Green;
+                    await Task.Delay(500);
                     // TODO: Hantera rätt svar
                     // EXEMPEL: results.CorrectAnswer(userId, questionId);
                 }
                 else
                 {
+                    selectedButton.BackgroundColor = Colors.Red;
+                    await Task.Delay(500);
                     // TODO: Hantera fel svar
                     // EXEMPEL: results.IncorrectAnswer(userId, questionId, (answer: default = "F you"));
                 }
@@ -136,7 +141,11 @@ namespace AEAQuiz.Pages
                 }
                 else
                 {
-                    DebugLabel.Text = "Vann jag???? Vad fick jag för resultat???? Hallå.... svara då!!!!!";
+                    string answerText;
+                    if ((double)numberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
+                    else { answerText = "Not so good...."; }
+                    DebugLabel.Text = $"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}";
+                    //DebugLabel.Text = "Vann jag???? Vad fick jag för resultat???? Hallå.... svara då!!!!!";
                     // TODO: Hantera när frågorna är slut
                     // EXAMPLE: if (numberOfQuestions <= 0) results.Save() och sedan skicka användaren tillbaka till en resultat sida
                     // med typ: await Navigation.PushAsync(new ResaultPage(results)); eller liknande

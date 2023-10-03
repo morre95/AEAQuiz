@@ -42,9 +42,17 @@ namespace AEAQuiz.Pages
                 (Difficulty)AppSettings.DifficultySelected,
                 numberOfQuestions,
                 await Token.Get());
+
             questionImage.Source = old;
             questionImage.WidthRequest = oldWidth;
             questionImage.HeightRequest = oldHeight;
+
+            if (quiz == null)
+            {
+                DebugLabel.Text = "Error occurd: Check your internet";
+                return;
+            }
+
             NextQuastion();
         }
 

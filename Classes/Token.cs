@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace AEAQuiz.Classes
 {
@@ -64,7 +65,7 @@ namespace AEAQuiz.Classes
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error occurred: " + e.Message);
+                Debug.WriteLine("Error occurred: " + e.Message);
                 return null;
             }
         }

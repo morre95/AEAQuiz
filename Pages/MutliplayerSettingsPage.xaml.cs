@@ -1,30 +1,38 @@
 using AEAQuiz.Classes;
 using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace AEAQuiz.Pages;
 
 public partial class MutliplayerSettingsPage : ContentPage
 {
-	public MutliplayerSettingsPage()
+    private List<Player> players = new();
+    private int playersCount = 1;
+    public MutliplayerSettingsPage()
 	{
 		InitializeComponent();
-        DisplayPromptAsync();
-
     }
 
-    async void DisplayPromptAsync()
+    private void NextPlayerClick(object sender, EventArgs e)
     {
-        List<Player> players = new();
-        for (int i = 1; i < int.MaxValue; i++) 
+        var player = sender as Button;
+        if (player != null)
         {
-            string result = await DisplayPromptAsync("Multiplayer", "Name?", accept: "Next", cancel: "Finish", initialValue: $"Player {i}");
-            if (result == null)
-            {
-                break;
-            }
-            players.Add(new Player(result));
+            players.Add(new Player(playerName.Text));
+            playersCount++;
+            playerName.Text = "Player " + playersCount;
         }
+    }
 
-        players.ForEach(p => { Debug.WriteLine(p.Name); });
+    private async void FinnishPlayerClick(object sender, EventArgs e)
+    {
+        var player = sender as Button;
+        if (player != null)
+        {
+            players.Add(new Player(playerName.Text));
+
+            if (players.Count < 2) DebugLabel.Text = $"Player count is only {players.Count}\nPlay single mode instead";
+            else await Navigation.PushAsync(new GameSettingsPage(JsonConvert.SerializeObject(players)));
+        }
     }
 }

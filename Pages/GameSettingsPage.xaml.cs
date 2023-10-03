@@ -2,16 +2,23 @@ using static System.Reflection.Metadata.BlobBuilder;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 using AEAQuiz.Classes;
+using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace AEAQuiz.Pages
 {
 
     public partial class GameSettingsPage : ContentPage
     {
+        private List<Player> players = new();
 
-
-        public GameSettingsPage()
+        public GameSettingsPage(string playersJson = null)
         {
+            if (playersJson != null) 
+            {
+                players = JsonConvert.DeserializeObject<List<Player>>(playersJson);
+                players.ForEach(p => { Debug.WriteLine(p.Name); });
+            }
             InitializeComponent();
             DificultyPicker.SelectedIndex = AppSettings.DifficultySelected;
             TypePicker.SelectedIndex = AppSettings.TypeSelected;

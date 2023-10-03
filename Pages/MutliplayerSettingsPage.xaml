@@ -33,7 +33,7 @@
                 Clicked="FinnishPlayerClick"
                 Margin="0,10,10,0"/>
         </HorizontalStackLayout>
-        <Label x:Name="DebugLabel"/>
+        <Label x:Name="DebugLabel" FontSize="Medium"/>
 
     </VerticalStackLayout>
 </ContentPage>

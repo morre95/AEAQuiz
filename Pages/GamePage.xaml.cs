@@ -155,6 +155,10 @@ namespace AEAQuiz.Pages
         {
             Dispatcher.DispatchAsync(() =>
             {
+                if (players.Count > 1)
+                {
+                    playerCountIndex++;
+                }
                 _ = ResultOrNextCheck();
             });
         }

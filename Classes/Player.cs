@@ -4,6 +4,11 @@
     {
         public string Name { get; private set; }
 
-        public Player(string name) { Name = name; }
+        public int NumberOfRightAswer { get; set; } = 0;
+
+        public Player(string name) 
+        { 
+            Name = name; 
+        }
     }
 }

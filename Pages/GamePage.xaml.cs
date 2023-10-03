@@ -23,14 +23,13 @@ namespace AEAQuiz.Pages
         {
             InitializeComponent();
 
+            numberOfQuestions = AppSettings.NumQuestionsSelected;
+
             if (playersJson != null)
             {
                 players = JsonConvert.DeserializeObject<List<Player>>(playersJson);
                 nextPlayer = false;
             }
-
-
-            numberOfQuestions = AppSettings.NumQuestionsSelected;
 
             _ = LoadTriviaQuestion();
         }
@@ -99,7 +98,6 @@ namespace AEAQuiz.Pages
                     nextPlayer = false;
                     NextPlayerBtn.IsVisible = false;
                     PlayerName.Text = players[playerCountIndex].Name;
-                    playerCountIndex++;
                 }
 
                 if (AppSettings.UseTimerToThink)
@@ -179,7 +177,15 @@ namespace AEAQuiz.Pages
                 bool isCorrect = CheckAnswer(selectedButton.Text);
                 if (isCorrect)
                 {
-                    numberOfRightAswer++;
+                    if (players.Count > 1)
+                    {
+                        players[playerCountIndex].NumberOfRightAswer++;
+                    }
+                    else
+                    {
+                        numberOfRightAswer++;
+                    }
+
                     selectedButton.BackgroundColor = Colors.Green;
                     await Task.Delay(500);
                 }
@@ -199,6 +205,7 @@ namespace AEAQuiz.Pages
             {
                 if (players.Count > 1)
                 {
+                    playerCountIndex++;
                     if (playerCountIndex >= players.Count)
                     {
                         currentIndex++;
@@ -219,9 +226,24 @@ namespace AEAQuiz.Pages
                 timer?.Dispose();
                 displayTimer?.Dispose();
                 string answerText;
-                if ((double)numberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
-                else { answerText = "Not so good...."; }
-                await Navigation.PushAsync(new ResultPage($"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}"));
+
+                if (players.Count > 1)
+                {
+                    List<string> answerTexts = new List<string>();
+                    foreach (Player player in players)
+                    {
+                        if ((double)player.NumberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
+                        else { answerText = "Not so good...."; }
+                        answerTexts.Add($"Quiz result for {player.Name}: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}");
+                    }
+                    await Navigation.PushAsync(new ResultPage(string.Join("\n", answerTexts.ToArray())));
+                }
+                else
+                {
+                    if ((double)numberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
+                    else { answerText = "Not so good...."; }
+                    await Navigation.PushAsync(new ResultPage($"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}"));
+                }    
             }
         }
 

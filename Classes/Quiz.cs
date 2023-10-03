@@ -34,23 +34,22 @@ namespace AEAQuiz.Classes
             _amount = amount;
         }
 
-        public static async Task<Quiz> Create()
+        public static async Task<Quiz> Fetch()
         {
             return await new Quiz()._getQuestions();
         }
 
-        public static async Task<Quiz> Create(int? category, QType type, Difficulty difficulty)
+        public static async Task<Quiz> Fetch(int? category, QType type, Difficulty difficulty)
         {
             return await new Quiz(category, type, difficulty)._getQuestions();
         }
 
-        public static async Task<Quiz> Create(int? category, QType type, Difficulty difficulty, int amount)
+        public static async Task<Quiz> Fetch(int? category, QType type, Difficulty difficulty, int amount)
         {
             return await new Quiz(category, type, difficulty, amount)._getQuestions();
         }
 
-        // TODO: Den här metoden hänger sig på samma sät som när .GetAwaiter().GetResult(); användes i stället för await
-        public static async Task<Quiz> Create(int? category, QType type, Difficulty difficulty, int amount, string token)
+        public static async Task<Quiz> Fetch(int? category, QType type, Difficulty difficulty, int amount, string token)
         {
             Quiz quiz = new Quiz(category, type, difficulty, amount);
             quiz.Token = token;

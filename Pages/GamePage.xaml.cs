@@ -27,8 +27,7 @@ namespace AEAQuiz.Pages
         {
             int? catId = null;
             if (AppSettings.CategorySelected != 0) catId = Categories.GetCategoryId(AppSettings.CategorySelected);
-            // TODO: Spara token i Preferences.Default.Set() och ett datum som kontrolleras förnyas efter 6 timmar 
-            // TODO: Create är ett ganksa vilseledande namn. Det borde vara Fetch() eller Get() eller likande
+
             ImageSource old = questionImage.Source;
             var oldWidth = questionImage.WidthRequest;
             var oldHeight = questionImage.HeightRequest;
@@ -37,7 +36,7 @@ namespace AEAQuiz.Pages
             questionImage.WidthRequest = 70; // eller 50 eller vilken storlek du vill ha för spinnern
             questionImage.HeightRequest = 70;
             questionImage.Source = ImageSource.FromFile("loading_spinner.gif");
-            quiz = await Quiz.Create(
+            quiz = await Quiz.Fetch(
                 catId,
                 (QType)AppSettings.TypeSelected,
                 (Difficulty)AppSettings.DifficultySelected,

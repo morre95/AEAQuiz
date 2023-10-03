@@ -72,11 +72,30 @@ namespace AEAQuiz.Pages
         private Timer displayTimer;
         private ImageService imageService = new ImageService();
 
+        private bool nextPlayer = false;
+
         private void NextQuastion()
         {
-
             if (quiz.Results.Count > 0 && currentIndex < quiz.Results.Count)
             {
+                if (!nextPlayer)
+                {
+                    questionImage.IsVisible = false;
+                    questonLabel.Text = "";
+                    PlayerName.Text = players[playerCountIndex].Name;
+                    NextPlayerBtn.IsVisible = true;
+                    return;
+                }
+
+                if (players.Count > 1)
+                {
+                    questionImage.IsVisible = true;
+                    nextPlayer = false;
+                    NextPlayerBtn.IsVisible = false;
+                    PlayerName.Text = players[playerCountIndex].Name;
+                    playerCountIndex++;
+                }
+
                 if (AppSettings.UseTimerToThink)
                 {
                     int sec = AppSettings.TimeToThinkSeconds;
@@ -123,13 +142,13 @@ namespace AEAQuiz.Pages
                     StackLayoutQ.Add(btn);
                     buttonsToDelete.Add(btn);
                 }
-
-                if (players.Count > 1)
-                {
-                    PlayerName.Text = players[playerCountIndex].Name;
-                    playerCountIndex++;
-                }
             }
+        }
+
+        private void OnNextPlayerClick(object sender, EventArgs e)
+        {
+            nextPlayer = true;
+            NextQuastion();
         }
 
         void TimerCallback(object state)
@@ -172,6 +191,7 @@ namespace AEAQuiz.Pages
                     {
                         currentIndex++;
                         playerCountIndex = 0;
+                        nextPlayer = false;
                     }
                 } 
                 else

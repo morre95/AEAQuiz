@@ -14,6 +14,7 @@
 
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
         <Label x:Name="PlayerName" />
+        <Button x:Name="NextPlayerBtn" Text="Next Player" IsVisible="false" Clicked="OnNextPlayerClick" />
         <StackLayout x:Name="StackLayoutQ" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
             <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="300" />
             <Label x:Name="questonLabel"

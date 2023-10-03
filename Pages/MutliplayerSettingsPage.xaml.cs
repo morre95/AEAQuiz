@@ -1,3 +1,4 @@
+using AEAQuiz.Classes;
 using System.Diagnostics;
 
 namespace AEAQuiz.Pages;
@@ -13,12 +14,17 @@ public partial class MutliplayerSettingsPage : ContentPage
 
     async void DisplayPromptAsync()
     {
-        string result = await DisplayPromptAsync("Multiplayer", "Name", initialValue: "Player 1");
-        if (result == "Cancel")
+        List<Player> players = new();
+        for (int i = 1; i < int.MaxValue; i++) 
         {
-            Debug.WriteLine("Detta blir bra");
+            string result = await DisplayPromptAsync("Multiplayer", "Name?", accept: "Next", cancel: "Finish", initialValue: $"Player {i}");
+            if (result == null)
+            {
+                break;
+            }
+            players.Add(new Player(result));
         }
 
-        Debug.WriteLine(result);
+        players.ForEach(p => { Debug.WriteLine(p.Name); });
     }
 }

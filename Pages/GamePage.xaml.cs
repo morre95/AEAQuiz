@@ -79,8 +79,13 @@ namespace AEAQuiz.Pages
         {
             if (quiz.Results.Count > 0 && currentIndex < quiz.Results.Count)
             {
+                timerProgress.IsVisible = false;
+                TimerLable.IsVisible = false;
                 if (!nextPlayer)
                 {
+                    timer?.Dispose();
+                    displayTimer?.Dispose();
+
                     questionImage.IsVisible = false;
                     questonLabel.Text = "";
                     PlayerName.Text = players[playerCountIndex].Name;
@@ -104,6 +109,8 @@ namespace AEAQuiz.Pages
                     timer?.Dispose();
                     timer = new Timer(TimerCallback, null, TimeSpan.FromSeconds(sec), Timeout.InfiniteTimeSpan);
 
+                    TimerLable.IsVisible = true;
+                    timerProgress.IsVisible = true;
                     timerProgress.Progress = 0;
                     timerProgress.ProgressTo(1.0, Convert.ToUInt32(sec * 1000), Easing.CubicIn);
 

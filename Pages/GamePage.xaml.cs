@@ -26,6 +26,7 @@ namespace AEAQuiz.Pages
             if (playersJson != null)
             {
                 players = JsonConvert.DeserializeObject<List<Player>>(playersJson);
+                nextPlayer = false;
             }
 
 
@@ -72,7 +73,7 @@ namespace AEAQuiz.Pages
         private Timer displayTimer;
         private ImageService imageService = new ImageService();
 
-        private bool nextPlayer = false;
+        private bool nextPlayer = true;
 
         private void NextQuastion()
         {

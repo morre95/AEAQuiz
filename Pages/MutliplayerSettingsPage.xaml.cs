@@ -31,8 +31,14 @@ public partial class MutliplayerSettingsPage : ContentPage
         {
             players.Add(new Player(playerName.Text));
 
-            if (players.Count < 2) DebugLabel.Text = $"Player count is only {players.Count}\nPlay single mode instead";
-            else await Navigation.PushAsync(new GameSettingsPage(JsonConvert.SerializeObject(players)));
+            if (players.Count < 2)
+            {
+                DebugLabel.Text = $"Player count is only {players.Count}\nPlay single mode instead";
+            }
+            else
+            {
+                await Navigation.PushAsync(new GameSettingsPage(JsonConvert.SerializeObject(players)));
+            }
         }
     }
 }

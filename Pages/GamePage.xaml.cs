@@ -1,4 +1,6 @@
 using AEAQuiz.Classes;
+using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Net;
 
 namespace AEAQuiz.Pages
@@ -13,9 +15,19 @@ namespace AEAQuiz.Pages
 
         private List<Button> buttonsToDelete;
 
-        public GamePage()
+        private List<Player> players = new List<Player>();
+
+        private int playerCountIndex = 0;
+
+        public GamePage(string playersJson = null)
         {
             InitializeComponent();
+
+            if (playersJson != null)
+            {
+                players = JsonConvert.DeserializeObject<List<Player>>(playersJson);
+            }
+
 
             numberOfQuestions = AppSettings.NumQuestionsSelected;
 
@@ -111,6 +123,12 @@ namespace AEAQuiz.Pages
                     StackLayoutQ.Add(btn);
                     buttonsToDelete.Add(btn);
                 }
+
+                if (players.Count > 1)
+                {
+                    PlayerName.Text = players[playerCountIndex].Name;
+                    playerCountIndex++;
+                }
             }
         }
 
@@ -148,7 +166,19 @@ namespace AEAQuiz.Pages
         {
             if (currentIndex < quiz.Results.Count - 1)
             {
-                currentIndex++;
+                if (players.Count > 1)
+                {
+                    if (playerCountIndex >= players.Count)
+                    {
+                        currentIndex++;
+                        playerCountIndex = 0;
+                    }
+                } 
+                else
+                {
+                    currentIndex++;
+                }
+                
                 buttonsToDelete.ForEach(x => { StackLayoutQ.Remove(x); });
                 NextQuastion();
             }

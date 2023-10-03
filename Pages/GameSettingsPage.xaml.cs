@@ -58,7 +58,14 @@ namespace AEAQuiz.Pages
 
         private async void GameBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GamePage());
+            if (players.Count <= 1)
+            {
+                await Navigation.PushAsync(new GamePage());
+            }
+            else
+            {
+                await Navigation.PushAsync(new GamePage(JsonConvert.SerializeObject(players)));
+            }
         }
     }
 }

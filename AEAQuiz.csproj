@@ -136,6 +136,7 @@
 	  <None Remove="Resources\Images\loading_spinner.gif" />
 	  <None Remove="Resources\Images\loading_spinner2.gif" />
 	  <None Remove="Resources\Images\questionmark.png" />
+	  <None Remove="Resources\Raw\quizDB.json" />
 	</ItemGroup>
 
 	<ItemGroup>

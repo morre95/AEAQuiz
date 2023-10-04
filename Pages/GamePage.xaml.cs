@@ -7,7 +7,7 @@ namespace AEAQuiz.Pages
 {
     public partial class GamePage : ContentPage
     {
-        private Quiz quiz;
+        private QuizBase quiz;
 
         private int numberOfQuestions, numberOfRightAswer = 0, numberOfPoints = 0;
 
@@ -48,12 +48,19 @@ namespace AEAQuiz.Pages
             questionImage.WidthRequest = 70; // eller 50 eller vilken storlek du vill ha för spinnern
             questionImage.HeightRequest = 70;
             questionImage.Source = ImageSource.FromFile("loading_spinner.gif");
-            quiz = await Quiz.Fetch(
+            /*quiz = await Quiz.Fetch(
                 catId,
                 (QType)AppSettings.TypeSelected,
                 (Difficulty)AppSettings.DifficultySelected,
                 numberOfQuestions,
-                await Token.Get());
+                await Token.Get());*/
+            quiz = await QuizFactory.Create(
+                "local",
+                catId,
+                (QType)AppSettings.TypeSelected,
+                (Difficulty)AppSettings.DifficultySelected,
+                numberOfQuestions,
+                true);
 
             questionImage.Source = old;
             questionImage.WidthRequest = oldWidth;

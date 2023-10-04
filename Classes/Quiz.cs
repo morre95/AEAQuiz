@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace AEAQuiz.Classes
 {
-    public class Quiz
+    public class Quiz : QuizBase
     {
         private int? _category;
         private string _type;
@@ -13,7 +13,7 @@ namespace AEAQuiz.Classes
         private string _token = null;
 
         [JsonIgnore]
-        public string Token { get { return _token; } set { _token = value; } }
+        public override string Token { get { return _token; } set { _token = value; } }
 
         [JsonIgnore]
         public int Amount { get { return _amount; } set { _amount = value; } }
@@ -119,9 +119,9 @@ namespace AEAQuiz.Classes
         }
 
         [JsonProperty("response_code")]
-        public int ResponseCode { get; set; }
+        public override int ResponseCode { get; set; }
 
-        public List<Result> Results { get; set; }
+        public override List<Result> Results { get; set; }
     }
 }
 

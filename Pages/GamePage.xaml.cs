@@ -48,14 +48,9 @@ namespace AEAQuiz.Pages
             questionImage.WidthRequest = 70; // eller 50 eller vilken storlek du vill ha för spinnern
             questionImage.HeightRequest = 70;
             questionImage.Source = ImageSource.FromFile("loading_spinner.gif");
-            /*quiz = await Quiz.Fetch(
-                catId,
-                (QType)AppSettings.TypeSelected,
-                (Difficulty)AppSettings.DifficultySelected,
-                numberOfQuestions,
-                await Token.Get());*/
+
             quiz = await QuizFactory.Create(
-                "local",
+                AppSettings.SelectedQuestionDB.ToLower(),
                 catId,
                 (QType)AppSettings.TypeSelected,
                 (Difficulty)AppSettings.DifficultySelected,

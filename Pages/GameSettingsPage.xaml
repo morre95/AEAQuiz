@@ -107,6 +107,19 @@
                 Margin="10,0,0,0" />
         </HorizontalStackLayout>
 
+        <Picker 
+            Title="Select where to get Questions"
+            x:Name="DBPicker"
+            TitleColor="White"
+            SelectedIndexChanged="DB_IndexChanged">  
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Api</x:String>
+                    <x:String>Local</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
 
         <Button 
             Text="Play" 

@@ -39,6 +39,12 @@ namespace AEAQuiz.Classes
             get { return Preferences.Default.Get(nameof(TimeToThinkSeconds), 60); }
             set { Preferences.Default.Set(nameof(TimeToThinkSeconds), value); }
         }
+
+        public static string SelectedQuestionDB
+        {
+            get { return Preferences.Default.Get(nameof(SelectedQuestionDB), "local"); }
+            set { Preferences.Default.Set(nameof(SelectedQuestionDB), value); }
+        }
     }
 }
 

@@ -31,6 +31,13 @@ namespace AEAQuiz.Pages
             TimeToThinkSlider.Value = AppSettings.TimeToThinkSeconds;
             UseTimerToThink.IsChecked = AppSettings.UseTimerToThink;
             TimeToThinkSlider.IsEnabled = AppSettings.UseTimerToThink;
+
+            int i = 0;
+            foreach(var item in DBPicker.ItemsSource)
+            {
+                if (item.ToString().ToLower() == AppSettings.SelectedQuestionDB) DBPicker.SelectedIndex = i;
+                i++;
+            }
         }
 
         private void OnTimeToThinkValueChanged(object sender, ValueChangedEventArgs e)
@@ -100,6 +107,11 @@ namespace AEAQuiz.Pages
             {
                 await Navigation.PushAsync(new GamePage(JsonConvert.SerializeObject(players)));
             }
+        }
+
+        private void DB_IndexChanged(object sender, EventArgs e)
+        {
+            AppSettings.SelectedQuestionDB = DBPicker.ItemsSource[DBPicker.SelectedIndex].ToString().ToLower();
         }
     }
 }

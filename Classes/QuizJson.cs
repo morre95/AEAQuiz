@@ -21,7 +21,7 @@ namespace AEAQuiz.Classes
 
             foreach (var result in quiz.Results)
             {
-                if ((Categories.GetCategoryIdByName(result.Category) == category || category == 0) &&
+                if ((Categories.GetCategoryIdByName(result.Category) == category || category == null) &&
                     (result.Type.ToLower() == _type || _type == "any") &&
                     (result.Difficulty.ToLower() == _difficulty || _difficulty == "any"))
                 {

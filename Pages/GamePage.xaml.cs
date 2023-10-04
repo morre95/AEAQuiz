@@ -188,18 +188,14 @@ namespace AEAQuiz.Pages
                         numberOfRightAswer++;
                     }
 
-                    correctImage.IsVisible = true;
-                    correctImage.Opacity = 1;
-
                     selectedButton.BackgroundColor = Colors.Green;
-                    //await Task.Delay(500);
-                    await correctImage.FadeTo(0.3, 1000, Easing.CubicIn);
-
-                    correctImage.IsVisible = false;
+                    questionImage.Source = ImageSource.FromFile("correct.png");
+                    await Task.Delay(500);
                 }
                 else
                 {
                     selectedButton.BackgroundColor = Colors.Red;
+                    questionImage.Source = ImageSource.FromFile("fail.png");
                     await Task.Delay(500);
                 }
 

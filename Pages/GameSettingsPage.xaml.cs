@@ -27,6 +27,40 @@ namespace AEAQuiz.Pages
             BindingContext = new Categories();
 
             CategoryPicker.SelectedIndex = AppSettings.CategorySelected;
+
+            TimeToThinkSlider.Value = AppSettings.TimeToThinkSeconds;
+            UseTimerToThink.IsChecked = AppSettings.UseTimerToThink;
+            TimeToThinkSlider.IsEnabled = AppSettings.UseTimerToThink;
+        }
+
+        private void OnTimeToThinkValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            //Avrunda värdet från slidern
+            var roundedValue = Math.Round(e.NewValue);
+
+            TimeToThinkSlider.Value = roundedValue;
+
+            var ts = TimeSpan.FromSeconds(roundedValue);
+            TimeToThinkValue.Text = ts.ToString("mm':'ss");
+            AppSettings.TimeToThinkSeconds = (int)roundedValue;
+        }
+
+        private void OnTimerCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            if (checkBox != null)
+            {
+                AppSettings.UseTimerToThink = UseTimerToThink.IsChecked;
+            }
+
+            if (UseTimerToThink.IsChecked == false)
+            {
+                TimeToThinkSlider.IsEnabled = false;
+            }
+            else
+            {
+                TimeToThinkSlider.IsEnabled = true;
+            }
         }
 
         private void OnSliderValueChanged(object sender, ValueChangedEventArgs e)

@@ -67,6 +67,12 @@ namespace AEAQuiz.Pages
                 return;
             }
 
+            if (quiz.ResponseCode == 4 || quiz.ResponseCode == 1)
+            {
+                DebugLabel.Text = $"Error occurd: the database didn´t have {numberOfQuestions} questions of your selected choices";
+                return;
+            }
+
             NextQuastion();
         }
 

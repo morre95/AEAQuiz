@@ -10,7 +10,7 @@ namespace AEAQuiz
 
         private async void SettingsBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SettingsPage());
+            await Navigation.PushAsync(new AboutPage());
         }
 
         private async void SinglePLayerBtn_Clicked(object sender, EventArgs e)

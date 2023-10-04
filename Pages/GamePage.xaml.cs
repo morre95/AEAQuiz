@@ -9,7 +9,7 @@ namespace AEAQuiz.Pages
     {
         private Quiz quiz;
 
-        private int numberOfQuestions, numberOfRightAswer = 0;
+        private int numberOfQuestions, numberOfRightAswer = 0, numberOfPoints = 0;
 
         private int currentIndex = 0;
 
@@ -129,7 +129,7 @@ namespace AEAQuiz.Pages
                 questionImage.Source = imageService.GetRandomImageForCategory(currentCategoryId);
 
                 //questonLabel.Text = quiz.Results[currentIndex].Question;
-                questonLabel.Text = WebUtility.HtmlDecode(quiz.Results[currentIndex].Question);
+                questonLabel.Text = WebUtility.HtmlDecode(quiz.Results[currentIndex].Question) + " (" + PointCount() + " p)";
 
                 var answers = new List<string>
                 {
@@ -182,10 +182,12 @@ namespace AEAQuiz.Pages
                     if (players.Count > 1)
                     {
                         players[playerCountIndex].NumberOfRightAswer++;
+                        players[playerCountIndex].NumberOfPoints += PointCount();
                     }
                     else
                     {
                         numberOfRightAswer++;
+                        numberOfPoints += PointCount();
                     }
 
                     selectedButton.BackgroundColor = Colors.Green;
@@ -246,11 +248,20 @@ namespace AEAQuiz.Pages
                 {
                     if ((double)numberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
                     else { answerText = "Not so good...."; }
-                    await Navigation.PushAsync(new ResultPage($"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}"));
+                    await Navigation.PushAsync(new ResultPage($"Quiz result: {numberOfRightAswer} right answers of {numberOfQuestions} questions. Points = {numberOfPoints} {answerText}"));
                 }    
             }
         }
 
+        private int PointCount()
+        {
+            //Easy type of question gives 1 point, medium 2 points and hard 3 points    
+            int points = 1;
+            if (quiz.Results[currentIndex].Difficulty == "medium") points = 2;
+            else if (quiz.Results[currentIndex].Difficulty == "hard") points = 3;
+
+            return points;
+        }
         private bool CheckAnswer(string answer)
         {
             return answer == quiz.Results[currentIndex].CorrectAnswer;

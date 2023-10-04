@@ -170,5 +170,11 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
-
+	<PropertyGroup Condition="$(TargetFramwork.Contains('-android')) and '$(Configuration)'== Release">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigngKeyStore>..\key.keystore</AndroidSigngKeyStore>
+		<AndroidSigngKeyStorePass>Amirhebib111</AndroidSigngKeyStorePass>
+		<AndroidSigningKeyAlias>AEA</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>AEA</AndroidSigningKeyPass>
+	</PropertyGroup>
 </Project>

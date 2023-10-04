@@ -88,6 +88,7 @@ namespace AEAQuiz.Pages
                     questionImage.IsVisible = false;
                     questonLabel.Text = "";
                     PlayerName.Text = players[playerCountIndex].Name;
+                    PlayerName.BackgroundColor = players[playerCountIndex].Color;
                     NextPlayerBtn.IsVisible = true;
                     return;
                 }
@@ -151,6 +152,7 @@ namespace AEAQuiz.Pages
             }
         }
 
+
         private void OnNextPlayerClick(object sender, EventArgs e)
         {
             nextPlayer = true;
@@ -186,8 +188,14 @@ namespace AEAQuiz.Pages
                         numberOfRightAswer++;
                     }
 
+                    correctImage.IsVisible = true;
+                    correctImage.Opacity = 1;
+
                     selectedButton.BackgroundColor = Colors.Green;
-                    await Task.Delay(500);
+                    //await Task.Delay(500);
+                    await correctImage.FadeTo(0.3, 1000, Easing.CubicIn);
+
+                    correctImage.IsVisible = false;
                 }
                 else
                 {

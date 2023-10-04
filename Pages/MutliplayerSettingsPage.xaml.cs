@@ -18,7 +18,8 @@ public partial class MutliplayerSettingsPage : ContentPage
         var player = sender as Button;
         if (player != null)
         {
-            players.Add(new Player(playerName.Text));
+            Color color = MyColors.GetRandom();
+            players.Add(new Player(playerName.Text, color));
             playersCount++;
             playerName.Text = "Player " + playersCount;
         }
@@ -29,7 +30,7 @@ public partial class MutliplayerSettingsPage : ContentPage
         var player = sender as Button;
         if (player != null)
         {
-            players.Add(new Player(playerName.Text));
+            players.Add(new Player(playerName.Text, MyColors.GetRandom()));
 
             if (players.Count < 2)
             {

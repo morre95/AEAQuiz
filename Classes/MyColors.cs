@@ -153,6 +153,20 @@
             { "YellowGreen", Color.FromUint(0xFF9ACD32) }
         };
 
+        private static readonly List<Color> _colors2 = new List<Color> 
+        {
+            Color.FromUint(0x3cb300),
+            Color.FromUint(0x001f99),
+            Color.FromUint(0x001f99),
+            Color.FromUint(0x997300),
+            Color.FromUint(0x669900),
+            Color.FromUint(0x99005c),
+            Color.FromUint(0xff0000),
+            Color.FromUint(0x000000),
+            Color.FromUint(0x000a33),
+            Color.FromUint(0x4cb8ff)
+        };
+
         public static List<Color> GetColorList() => _colors.Values.ToList();
 
         public static Color GetRandom() 
@@ -160,6 +174,13 @@
             Random r = new();
             List<Color> colors = GetColorList();
             return colors[r.Next(colors.Count)];
+        }
+
+        public static Color GetColorBy(int index)
+        {
+            string str = index.ToString();
+            char lastCharacter = str[str.Length - 1];
+            return _colors2[int.Parse(lastCharacter.ToString())];
         }
 
     }

@@ -240,7 +240,7 @@ namespace AEAQuiz.Pages
                     {
                         if ((double)player.NumberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
                         else { answerText = "Not so good...."; }
-                        answerTexts.Add($"Quiz result for {player.Name}: {player.NumberOfRightAswer} right answers of {numberOfQuestions} questions.  {answerText}");
+                        answerTexts.Add($"Quiz result for {player.Name}: {player.NumberOfRightAswer} right answers of {numberOfQuestions} questions.  Points = {player.NumberOfPoints}");
                     }
                     await Navigation.PushAsync(new ResultPage(string.Join("\n", answerTexts.ToArray())));
                 }

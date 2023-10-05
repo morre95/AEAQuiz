@@ -8,7 +8,7 @@ namespace AEAQuiz
             InitializeComponent();
         }
 
-        private async void SettingsBtn_Clicked(object sender, EventArgs e)
+        private async void AboutBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AboutPage());
         }

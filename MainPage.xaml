@@ -10,42 +10,41 @@
             <GradientStop Color="#3333FF" Offset="1.0"/>
         </LinearGradientBrush>
     </ContentPage.Background>
-    
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-            <Button Text="..." 
+
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout>
+            <Button Text="About" 
                 HorizontalOptions="End" 
                 VerticalOptions="Start" 
                 Margin="10"
-                Clicked="SettingsBtn_Clicked" />
-            
+                Clicked="AboutBtn_Clicked" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center">
             <Image
                 Source="aea_logo.png"
                 SemanticProperties.Description="aea logo"
                 HeightRequest="200"
+                VerticalOptions="Center"
                 HorizontalOptions="Center" />
 
-           
-            <Button Text="Singleplayer" 
+            <Button 
+                Text="Singleplayer" 
                 HorizontalOptions="Center" 
                 VerticalOptions="Center"
-                Padding="20, 10"
+                Padding="20,10"
+                Margin="0,0,0,20"
                 FontSize="Large"
-                Clicked="SinglePLayerBtn_Clicked"/>
-            
-            <Button Text="Multiplayer" 
+                Clicked="SinglePLayerBtn_Clicked" />
+
+            <Button 
+                Text="Multiplayer" 
                 HorizontalOptions="Center" 
                 VerticalOptions="Center"
-                Padding="20, 10"
+                Padding="20,10"
                 FontSize="Large"
-                    Clicked="MultiplayerBtn_Clicked"/>
-
-
+                Clicked="MultiplayerBtn_Clicked" />
 
         </VerticalStackLayout>
-    </ScrollView>
+    </FlexLayout>
 
 </ContentPage>

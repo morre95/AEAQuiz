@@ -215,7 +215,7 @@ namespace AEAQuiz.Pages
 
         private async Task ResultOrNextCheck()
         {
-            if (currentIndex < quiz.Results.Count - 1)
+            if (currentIndex < quiz.Results.Count - 1 || playerCountIndex < players.Count - 1)
             {
                 if (players.Count > 1)
                 {

@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="AEAQuiz.Classes.AppSettings">
-    <Position X="21.75" Y="3.5" Width="1.5" />
+    <Position X="21" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAABAAAAAIAAAEAAgAAACAAAQ=</HashCode>
       <FileName>Classes\AppSettings.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.Categories">
-    <Position X="20" Y="3.5" Width="1.5" />
+    <Position X="18.75" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAAAAAgAAg=</HashCode>
       <FileName>Classes\Categories.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.ImageService">
-    <Position X="23.5" Y="2" Width="1.5" />
+    <Position X="23.25" Y="2" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAE=</HashCode>
       <FileName>Classes\ImageService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.MyColors">
-    <Position X="16.5" Y="3.5" Width="1.5" />
+    <Position X="14" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\MyColors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.Player">
-    <Position X="22" Y="7" Width="1.5" />
+    <Position X="22.5" Y="7" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAQAABAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Classes\Player.cs</FileName>
@@ -50,7 +50,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.QuizFactory">
-    <Position X="20.25" Y="7" Width="1.5" />
+    <Position X="20.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\QuizFactory.cs</FileName>
@@ -64,28 +64,28 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.ResponseCode">
-    <Position X="18.25" Y="3.5" Width="1.5" />
+    <Position X="16.5" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Classes\ResponseCode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.Result">
-    <Position X="16.75" Y="7" Width="1.5" />
+    <Position X="16.75" Y="7" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAABAAAAAQAAAAAAAAAAAAAAAABEAQAAAAAACAA=</HashCode>
       <FileName>Classes\Result.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.SessionToken">
-    <Position X="18.5" Y="7" Width="1.5" />
+    <Position X="18.75" Y="7" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAA=</HashCode>
       <FileName>Classes\SessionToken.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Classes.Token">
-    <Position X="15" Y="7" Width="1.5" />
+    <Position X="14.75" Y="7" Width="1.75" />
     <NestedTypes>
       <Enum Name="AEAQuiz.Classes.Token.TokenOption" Collapsed="true">
         <TypeIdentifier>
@@ -99,85 +99,78 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Pages.AboutPage">
-    <Position X="26.75" Y="3.75" Width="1.5" />
+    <Position X="28" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Pages\AboutPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Pages.GamePage">
-    <Position X="28.5" Y="3" Width="1.5" />
+    <Position X="29.75" Y="3" Width="2" />
     <TypeIdentifier>
       <HashCode>AAQAAEAAAAAAIECCAAACmAAAAAEAAwAAJACAQAAAQCg=</HashCode>
       <FileName>Pages\GamePage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Pages.GameSettingsPage">
-    <Position X="30.5" Y="3" Width="1.5" />
+    <Position X="32.25" Y="3" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAACAAiAAAAAAAAAAAAAAAEAAAAAQAIAAgAAAQAAQ=</HashCode>
       <FileName>Pages\GameSettingsPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Pages.MutliplayerSettingsPage">
-    <Position X="25.75" Y="7" Width="1.5" />
+    <Position X="27" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAABAAAAAAIIAAAAAAAAAA=</HashCode>
       <FileName>Pages\MutliplayerSettingsPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.Pages.ResultPage">
-    <Position X="28.5" Y="0.75" Width="1.5" />
+    <Position X="29.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Pages\ResultPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AEAQuiz.Settings">
-    <Position X="13.25" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Pages\SettingsPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="AEAQuiz.SettingsPage">
-    <Position X="30.5" Y="0.75" Width="1.5" />
+    <Position X="31.75" Y="0.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Pages\SettingsPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.MainPage">
-    <Position X="25.5" Y="0.5" Width="1.5" />
+    <Position X="26.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABAAAAAQAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AEAQuiz.MauiProgram">
-    <Position X="24" Y="7" Width="1.5" />
+    <Position X="24.75" Y="7" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MauiProgram.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="System.Object" Collapsed="true">
-    <Position X="24.25" Y="4.25" Width="1.5" />
+  <Class Name="Microsoft.Maui.Controls.ContentPage" Collapsed="true">
+    <Position X="26.75" Y="2.75" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="Microsoft.Maui.Controls.ContentPage" Collapsed="true">
-    <Position X="25.5" Y="2.75" Width="1.5" />
+  <Class Name="System.Object">
+    <Position X="14.75" Y="0.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Enum Name="AEAQuiz.Classes.Difficulty">
-    <Position X="12.75" Y="3.5" Width="1.5" />
+    <Position X="11" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAA=</HashCode>
       <FileName>Classes\Difficulty.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="AEAQuiz.Classes.QType">
-    <Position X="14.5" Y="3.5" Width="1.5" />
+    <Position X="11" Y="5.25" Width="2" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAQAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\QType.cs</FileName>

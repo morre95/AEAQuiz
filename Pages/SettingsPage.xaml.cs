@@ -2,7 +2,6 @@ using AEAQuiz.Classes;
 
 namespace AEAQuiz
 {
-    public class Settings { }
     public partial class SettingsPage : ContentPage
     {
         public SettingsPage()
@@ -21,7 +20,7 @@ namespace AEAQuiz
             TimeToThinkSlider.Value = roundedValue;
 
             var ts = TimeSpan.FromSeconds(roundedValue);
-            TimeToThinkValue.Text = ts.ToString("mm':'ss"); 
+            TimeToThinkValue.Text = ts.ToString("mm':'ss");
             AppSettings.TimeToThinkSeconds = (int)roundedValue;
         }
 

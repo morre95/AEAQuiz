@@ -96,7 +96,7 @@ namespace AEAQuiz.Pages
                     questionImage.IsVisible = false;
                     questonLabel.Text = "";
                     PlayerName.Text = players[playerCountIndex].Name;
-                    PlayerName.BackgroundColor = players[playerCountIndex].Color;
+                    PlayerName.TextColor = players[playerCountIndex].Color;
                     NextPlayerBtn.IsVisible = true;
                     return;
                 }

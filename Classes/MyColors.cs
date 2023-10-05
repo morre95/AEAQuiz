@@ -4,7 +4,7 @@
     {
         private static readonly List<Color> _colors2 = new List<Color> 
         {
-            Colors.Red,
+            Colors.Green,
             Color.FromUint(0x808080),
             Colors.MediumBlue,
             Color.FromUint(0x997300),

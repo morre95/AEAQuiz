@@ -49,35 +49,38 @@
             HorizontalOptions="Center"
             VerticalOptions="Center">
 
-            <Picker 
-                Title="Select difficulty"
-                x:Name="DificultyPicker"
-                TitleColor="White"
-                SelectedIndexChanged="Dificulty_IndexChanged">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Any</x:String>
-                        <x:String>Easy</x:String>
-                        <x:String>Normal</x:String>
-                        <x:String>Hard</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <StackLayout>
+                <Label Text="Select difficulty" />
+                <Picker 
+                    x:Name="DificultyPicker"
+                    SelectedIndexChanged="Dificulty_IndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Any</x:String>
+                            <x:String>Easy</x:String>
+                            <x:String>Normal</x:String>
+                            <x:String>Hard</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
-            <Picker
-                Title="Select type"
-                x:Name="TypePicker"
-                TitleColor="White"
-                Margin="20,0,0,0"
-                SelectedIndexChanged="Type_IndexChanged">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Any</x:String>
-                        <x:String>Multiple</x:String>
-                        <x:String>True / False</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <StackLayout>
+                <Label Text="Select type" Margin="20,0,0,0" />
+                <Picker
+                    x:Name="TypePicker"
+                    Margin="20,0,0,0"
+                    SelectedIndexChanged="Type_IndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Any</x:String>
+                            <x:String>Multiple</x:String>
+                            <x:String>True / False</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+            
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20,0,0">
@@ -107,19 +110,21 @@
                 Margin="10,0,0,0" />
         </HorizontalStackLayout>
 
-        <Picker 
-            Title="Select where to get Questions"
-            x:Name="DBPicker"
-            TitleColor="White"
-            SelectedIndexChanged="DB_IndexChanged">  
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Api</x:String>
-                    <x:String>Local</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
-
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Select where to get Questions" />
+            <Picker 
+                x:Name="DBPicker"
+                SelectedIndexChanged="DB_IndexChanged"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Api</x:String>
+                        <x:String>Local</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </VerticalStackLayout>
 
         <Button 
             Text="Play" 

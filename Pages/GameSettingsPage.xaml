@@ -10,11 +10,9 @@
         </LinearGradientBrush>
     </ContentPage.Background>
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-
+        <Label Text="Select category" HorizontalOptions="Center" VerticalOptions="Center" />
         <Picker 
             Margin="0,4,0,44"
-            Title="Select category"
-            TitleColor="White"
             x:Name="CategoryPicker"
             HorizontalOptions="Center"
             VerticalOptions="Center"

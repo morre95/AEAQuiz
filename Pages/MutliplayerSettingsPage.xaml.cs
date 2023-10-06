@@ -2,6 +2,7 @@ using AEAQuiz.Classes;
 using System.Diagnostics;
 using Newtonsoft.Json;
 
+
 namespace AEAQuiz.Pages;
 
 public partial class MutliplayerSettingsPage : ContentPage
@@ -22,6 +23,7 @@ public partial class MutliplayerSettingsPage : ContentPage
             players.Add(new Player(playerName.Text, color));
             playersCount++;
             playerName.Text = "Player " + playersCount;
+            playerName.Focus();
         }
     }
 
@@ -38,8 +40,17 @@ public partial class MutliplayerSettingsPage : ContentPage
             }
             else
             {
+                // TODO: Andriod stänger inte tangentbordet 
                 await Navigation.PushAsync(new GameSettingsPage(JsonConvert.SerializeObject(players)));
             }
         }
+    }
+
+    private async void OnEntryFocus(object sender, FocusEventArgs e)
+    {
+        var entry = sender as Entry;
+
+        entry.CursorPosition = 0;
+        entry.SelectionLength = entry.Text == null ? 0 : entry.Text.Length;
     }
 }

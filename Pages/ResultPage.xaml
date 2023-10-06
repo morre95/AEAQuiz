@@ -3,24 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AEAQuiz.Pages.ResultPage" 
              Shell.NavBarIsVisible="False">
-    <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#FF5733" Offset="0.0"/>
-            <GradientStop Color="#3333FF" Offset="1.0"/>
-        </LinearGradientBrush>
-    </ContentPage.Background>
-    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label 
-            x:Name="result"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            FontSize="24"
-            Margin="0,0,0,20"
-            Padding="15,0,15,0"/>
-        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Button Text="Play Again" Clicked="PlayAgainClick" Margin="0,10,35,0" WidthRequest="96" />
-            <Button Text="Quit" Clicked="QuitClick" Margin="0,10,35,0" WidthRequest="96" />
-        </HorizontalStackLayout>
-        
-    </VerticalStackLayout>
+    <ScrollView>
+        <ContentPage.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF5733" Offset="0.0"/>
+                <GradientStop Color="#3333FF" Offset="1.0"/>
+            </LinearGradientBrush>
+        </ContentPage.Background>
+        <ContentPage.Resources>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </ContentPage.Resources>
+        <VerticalStackLayout x:Name="ResultStack" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,25">
+
+            <Label 
+                x:Name="result"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="18"
+                Margin="0,0,0,20"
+                Padding="15,0,15,0"/>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Button Text="Play Again" Clicked="PlayAgainClick" Margin="0,10,35,0" WidthRequest="96" />
+                <Button Text="Quit" Clicked="QuitClick" Margin="0,10,35,0" WidthRequest="96" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>

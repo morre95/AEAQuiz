@@ -1,5 +1,7 @@
 using AEAQuiz.Classes;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net;
 
@@ -29,6 +31,11 @@ namespace AEAQuiz.Pages
             {
                 players = JsonConvert.DeserializeObject<List<Player>>(playersJson);
                 nextPlayer = false;
+            }
+
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                NextPlayerBtn.WidthRequest = 220;
             }
 
             _ = LoadTriviaQuestion();
@@ -243,14 +250,16 @@ namespace AEAQuiz.Pages
 
                 if (players.Count > 1)
                 {
-                    List<string> answerTexts = new List<string>();
-                    foreach (Player player in players)
+                    List<dynamic> answerTexts = new List<dynamic>();
+                    var orderdPlayers = players.OrderByDescending(x => x.NumberOfRightAswer);
+
+                    answerTexts.Add(new { Winner = orderdPlayers.First().Name });
+                    foreach (var x in orderdPlayers)
                     {
-                        if ((double)player.NumberOfRightAswer / numberOfQuestions > 0.5) { answerText = "Well done!"; }
-                        else { answerText = "Not so good...."; }
-                        answerTexts.Add($"Quiz result for {player.Name}: {player.NumberOfRightAswer} right answers of {numberOfQuestions} questions.  Points = {player.NumberOfPoints}");
+                        answerTexts.Add(new { Name = x.Name, NumberOfRightAswer = x.NumberOfRightAswer, NumberOfPoints = x.NumberOfPoints });
                     }
-                    await Navigation.PushAsync(new ResultPage(string.Join("\n", answerTexts.ToArray())));
+
+                    await Navigation.PushAsync(new ResultPage(answerTexts, numberOfQuestions));
                 }
                 else
                 {

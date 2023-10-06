@@ -22,7 +22,8 @@
             Placeholder="Player Name"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            WidthRequest="250"/>
+            WidthRequest="250"
+            Focused="OnEntryFocus"/>
         <HorizontalStackLayout>
             <Button
                 Text="Next"

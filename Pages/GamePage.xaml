@@ -2,35 +2,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AEAQuiz.Pages.GamePage"
-             Shell.NavBarIsVisible="False"
-             >
+             Shell.NavBarIsVisible="False" >
+    <ScrollView>
+        <ContentPage.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF5733" Offset="0.0"/>
+                <GradientStop Color="#3333FF" Offset="1.0"/>
+            </LinearGradientBrush>
+        </ContentPage.Background>
 
-    <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#FF5733" Offset="0.0"/>
-            <GradientStop Color="#3333FF" Offset="1.0"/>
-        </LinearGradientBrush>
-    </ContentPage.Background>
 
-    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
-        <HorizontalStackLayout Margin="0,0,0,25">
-            <Label x:Name="PlayerName" Margin="0,0,20,0" FontSize="28"/>
-            <Button x:Name="NextPlayerBtn" Text="Next Player" IsVisible="false" Clicked="OnNextPlayerClick" Margin="0,0,20,0" />
-        </HorizontalStackLayout>
-        
-        <StackLayout x:Name="StackLayoutQ" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-            <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="300" />
-            <Label x:Name="questonLabel"
-           Text="Loading..."
-           FontSize="18"
-           HorizontalOptions="Center"
-           VerticalOptions="Center" />
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+            <VerticalStackLayout Margin="1,1,1,25">
+                <Label x:Name="PlayerName" Margin="0,0,0,20" FontSize="28" MinimumWidthRequest="120"/>
+                <Button x:Name="NextPlayerBtn" Text="Next Player" IsVisible="false" WidthRequest="120" Clicked="OnNextPlayerClick" Padding="5" />
+            </VerticalStackLayout>
 
-        </StackLayout>
-        <StackLayout Margin="0,35,0,0">
-            <ProgressBar x:Name="timerProgress" ProgressColor="Red" />
-            <Label x:Name="TimerLable" />
-            <Label x:Name="DebugLabel" FontSize="32"/>
-        </StackLayout>
-    </VerticalStackLayout>
+            <StackLayout x:Name="StackLayoutQ" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+                <Image x:Name="questionImage" Source="questionmark.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="300" />
+                <Label x:Name="questonLabel"
+                       Text="Loading..."
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+            </StackLayout>
+            <StackLayout Margin="0,35,0,0">
+                <ProgressBar x:Name="timerProgress" ProgressColor="Red" />
+                <Label x:Name="TimerLable" />
+                <Label x:Name="DebugLabel" FontSize="32"/>
+            </StackLayout>
+        </VerticalStackLayout>
+
+    </ScrollView>
+    
 </ContentPage>

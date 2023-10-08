@@ -251,7 +251,7 @@ namespace AEAQuiz.Pages
                 if (players.Count > 1)
                 {
                     List<dynamic> answerTexts = new List<dynamic>();
-                    var orderdPlayers = players.OrderByDescending(x => x.NumberOfRightAswer);
+                    var orderdPlayers = players.OrderByDescending(x => x.NumberOfPoints);
 
                     answerTexts.Add(new { Winner = orderdPlayers.First().Name });
                     foreach (var x in orderdPlayers)

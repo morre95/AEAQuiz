@@ -11,12 +11,10 @@ namespace AEAQuiz.Pages
             result.Text = message;
         }
 
-        public ResultPage(List<dynamic> message, int numberOfQuestions)
+        public ResultPage(string winnerText, List<dynamic> message, int numberOfQuestions)
         {
             InitializeComponent();
-            string winner = message.FirstOrDefault().Winner;
-            var root = new TableRoot($"Winner: {winner}");
-            message.RemoveAt(0);
+            var root = new TableRoot(winnerText);
 
             string answerDetail;
             foreach (var item in message)

@@ -250,16 +250,28 @@ namespace AEAQuiz.Pages
 
                 if (players.Count > 1)
                 {
-                    List<dynamic> answerTexts = new List<dynamic>();
+                    List<dynamic> answerObjects = new List<dynamic>();
                     var orderdPlayers = players.OrderByDescending(x => x.NumberOfPoints);
 
-                    answerTexts.Add(new { Winner = orderdPlayers.First().Name });
-                    foreach (var x in orderdPlayers)
+                    var winner = orderdPlayers.First();
+                    var winners = orderdPlayers.Where(x => x.NumberOfPoints == winner.NumberOfPoints).ToList();
+
+                    string winnerText;
+                    if (winners.Count < 2) 
                     {
-                        answerTexts.Add(new { Name = x.Name, NumberOfRightAswer = x.NumberOfRightAswer, NumberOfPoints = x.NumberOfPoints });
+                        winnerText = $"Winner: {winner.Name}";
+                    }
+                    else
+                    {
+                        winnerText = $"Winners: {string.Join(", ", winners.Select(x => x.Name).ToArray())}";
                     }
 
-                    await Navigation.PushAsync(new ResultPage(answerTexts, numberOfQuestions));
+                    foreach (var x in orderdPlayers)
+                    {
+                        answerObjects.Add(new { Name = x.Name, NumberOfRightAswer = x.NumberOfRightAswer, NumberOfPoints = x.NumberOfPoints });
+                    }
+
+                    await Navigation.PushAsync(new ResultPage(winnerText, answerObjects, numberOfQuestions));
                 }
                 else
                 {

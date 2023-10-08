@@ -21,6 +21,16 @@ namespace AEAQuiz.Pages
 
         private int playerCountIndex = 0;
 
+        private int Retrys = 0;
+
+        private Timer timer;
+
+        private Timer displayTimer;
+
+        private ImageService imageService = new ImageService();
+
+        private bool nextPlayer = true;
+
         public GamePage(string playersJson = null)
         {
             InitializeComponent();
@@ -41,7 +51,7 @@ namespace AEAQuiz.Pages
             _ = LoadTriviaQuestion();
         }
 
-
+        
         private async Task LoadTriviaQuestion()
         {
             int? catId = null;
@@ -76,18 +86,25 @@ namespace AEAQuiz.Pages
 
             if (quiz.ResponseCode == 4 || quiz.ResponseCode == 1)
             {
+                if (quiz.ResponseCode == 4 && Retrys < 2)
+                {
+                    Retrys++;
+                    Token.Reset();
+                    await LoadTriviaQuestion();
+                }
+
                 DebugLabel.Text = $"Error occurd: the database didn´t have {numberOfQuestions} questions of your selected choices";
+                return;
+            }
+
+            if (quiz.ResponseCode == 3)
+            {
+                DebugLabel.Text = "Error occurd: Session Token does not exists. Try again.";
                 return;
             }
 
             NextQuastion();
         }
-
-        private Timer timer;
-        private Timer displayTimer;
-        private ImageService imageService = new ImageService();
-
-        private bool nextPlayer = true;
 
         private void NextQuastion()
         {
@@ -291,6 +308,7 @@ namespace AEAQuiz.Pages
 
             return points;
         }
+
         private bool CheckAnswer(string answer)
         {
             return answer == quiz.Results[currentIndex].CorrectAnswer;

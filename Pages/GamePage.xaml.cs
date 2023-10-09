@@ -215,6 +215,10 @@ namespace AEAQuiz.Pages
             var selectedButton = sender as Button;
             if (selectedButton != null)
             {
+                foreach (var buttons in buttonsToDelete)
+                {
+                    buttons.IsEnabled = false;
+                }
                 bool isCorrect = CheckAnswer(selectedButton.Text);
                 if (isCorrect)
                 {

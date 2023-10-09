@@ -2,7 +2,6 @@ using AEAQuiz.Classes;
 using System.Diagnostics;
 using Newtonsoft.Json;
 
-
 namespace AEAQuiz.Pages;
 
 public partial class MutliplayerSettingsPage : ContentPage
@@ -24,6 +23,23 @@ public partial class MutliplayerSettingsPage : ContentPage
             playersCount++;
             playerName.Text = "Player " + playersCount;
             playerName.Focus();
+
+            //PlayersListLabel.Text = "Players added:\n" + string.Join(", ", players.Select(p => p.Name).ToArray());
+            PlayersListLabel.Text = "Players added:\n";
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                PlayersListLabel.Text += players[i].Name;
+                if (i % 3 == 2) 
+                {
+                    PlayersListLabel.Text += "\n";
+                }
+                else if (i < players.Count - 1)
+                {
+                    PlayersListLabel.Text += ", ";
+                }
+            }
+
         }
     }
 
@@ -32,7 +48,7 @@ public partial class MutliplayerSettingsPage : ContentPage
         var player = sender as Button;
         if (player != null)
         {
-            players.Add(new Player(playerName.Text, MyColors.GetColorBy(playersCount - 1)));
+            //players.Add(new Player(playerName.Text, MyColors.GetColorBy(playersCount - 1)));
 
             if (players.Count < 2)
             {

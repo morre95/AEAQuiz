@@ -10,6 +10,7 @@
         </LinearGradientBrush>
     </ContentPage.Background>
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        
         <Label 
             Text="Player name"
             FontSize="Small"
@@ -26,7 +27,7 @@
             Focused="OnEntryFocus"/>
         <HorizontalStackLayout>
             <Button
-                Text="Next"
+                Text="Add"
                 Clicked="NextPlayerClick"
                 Margin="0,10,10,0"/>
             <Button
@@ -34,6 +35,7 @@
                 Clicked="FinnishPlayerClick"
                 Margin="0,10,10,0"/>
         </HorizontalStackLayout>
+        <Label x:Name="PlayersListLabel" />
         <Label x:Name="DebugLabel" FontSize="Medium"/>
 
     </VerticalStackLayout>

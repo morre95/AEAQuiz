@@ -11,9 +11,17 @@ namespace AEAQuiz.Classes
         public override List<Result> Results { get; set; } = new List<Result>();
         public override string Token { get; set; }
 
-        public static async Task<QuizJson> Fetch(int? category, QType type, Difficulty difficulty, int amount)
+        private readonly static Dictionary<string, string> _languageFileNames = new Dictionary<string, string> 
         {
-            QuizJson quiz = await LoadJsonDB();
+            { "en", "quizDB.json" },
+            { "sv", "quizDBSV.json" }
+        };
+
+        public static async Task<QuizJson> Fetch(int? category, QType type, Difficulty difficulty, int amount, string language = "en")
+        {
+            string fileName = _languageFileNames[language.ToLower()];
+
+            QuizJson quiz = await LoadJsonDB(fileName);
 
             QuizJson qResult = new();
             string _type = type.ToString().ToLower();
@@ -60,9 +68,9 @@ namespace AEAQuiz.Classes
             return ret;
         }
 
-        private static async Task<QuizJson> LoadJsonDB()
+        private static async Task<QuizJson> LoadJsonDB(string fileName)
         {
-            using var stream = await FileSystem.OpenAppPackageFileAsync("quizDB.json");
+            using var stream = await FileSystem.OpenAppPackageFileAsync(fileName);
             using var reader = new StreamReader(stream);
 
             var contents = reader.ReadToEnd();

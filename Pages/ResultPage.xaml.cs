@@ -14,6 +14,7 @@ namespace AEAQuiz.Pages
         public ResultPage(string winnerText, List<dynamic> message, int numberOfQuestions)
         {
             InitializeComponent();
+            // TODO: Vinnare presenteras inte på Android
             var root = new TableRoot(winnerText);
 
             string answerDetail;

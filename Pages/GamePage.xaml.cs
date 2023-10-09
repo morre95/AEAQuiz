@@ -93,7 +93,8 @@ namespace AEAQuiz.Pages
                     await LoadTriviaQuestion();
                 }
 
-                DebugLabel.Text = $"Error occurd: the database didn´t have {numberOfQuestions} questions of your selected choices";
+                DebugLabel.Text = $"Error occurd: the database didn´t have {numberOfQuestions} questions of your selected choices.\nNumber of question returned is {quiz.Results.Count}.\nDo you wnat to use them?";
+
                 return;
             }
 
@@ -101,6 +102,12 @@ namespace AEAQuiz.Pages
             {
                 DebugLabel.Text = "Error occurd: Session Token does not exists. Try again.";
                 return;
+            }
+
+            if (quiz.ResponseCode == 2)
+            {
+                var respCode = new ResponseCode(quiz.ResponseCode);
+                DebugLabel.Text = $"Error occurd: {respCode.Message}";
             }
 
             NextQuastion();

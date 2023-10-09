@@ -29,6 +29,14 @@ namespace AEAQuiz.Classes
                 }
             }
 
+            if (qResult.Results.Count < amount) 
+            { 
+                // TODO: Detta kan returnera ett antal frågor som skulle kunna användas.
+                // Exempel: Kontrollera i GamePage om det finns >= 1 frågor och ladda om sidan om det är ok för användaren med en knapp
+                qResult.ResponseCode = 1;
+                return qResult; 
+            }
+
             return GetRandomAmount(amount, qResult);
         }
 

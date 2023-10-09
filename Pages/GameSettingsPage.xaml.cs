@@ -14,12 +14,34 @@ namespace AEAQuiz.Pages
 
         public GameSettingsPage(string playersJson = null)
         {
+            InitializeComponent();
             if (playersJson != null) 
             {
                 players = JsonConvert.DeserializeObject<List<Player>>(playersJson);
-                players.ForEach(p => { Debug.WriteLine(p.Name); });
+
+                HorizontalStackLayout stack = new HorizontalStackLayout();
+                for (int index = 0; index < players.Count; index++)
+                {
+                    Label playerLabel = new Label()
+                    {
+                        Text = players[index].Name,
+                        TextColor = players[index].Color,
+                        Margin = new Thickness(0, 0, 10, 20)
+                    };
+                    stack.Add(playerLabel);
+                    if (index % 3 == 2)
+                    {
+                        MultiplayerNameStack.Add(stack);
+                        stack = new HorizontalStackLayout();
+                    }
+                    else if (index >= players.Count - 1)
+                    {
+                        MultiplayerNameStack.Add(stack);
+                    }
+                }
+
             }
-            InitializeComponent();
+            
             DificultyPicker.SelectedIndex = AppSettings.DifficultySelected;
             TypePicker.SelectedIndex = AppSettings.TypeSelected;
             NumQuestionsSlider.Value = AppSettings.NumQuestionsSelected;

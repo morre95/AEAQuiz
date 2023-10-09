@@ -10,6 +10,9 @@
         </LinearGradientBrush>
     </ContentPage.Background>
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout x:Name="MultiplayerNameStack" HorizontalOptions="Center" VerticalOptions="Center">
+
+        </StackLayout>
         <Label Text="Select category" HorizontalOptions="Center" VerticalOptions="Center" />
         <Picker 
             Margin="0,4,0,44"

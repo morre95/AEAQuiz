@@ -21,13 +21,15 @@ namespace AEAQuiz.Classes
                 (int)args[3],
                 token);
             } 
-            else if (what == "local" && args.Length == 5)
+            else if (what.StartsWith("local") && args.Length == 5)
             {
+                string[] parts = what.Split(' ');
                 return await QuizJson.Fetch(
                 (int?)args[0],
                 (QType)args[1],
                 (Difficulty)args[2],
-                (int)args[3]);
+                (int)args[3],
+                parts[1].ToLower());
             }
             else
             {

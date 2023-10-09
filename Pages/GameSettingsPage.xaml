@@ -118,7 +118,8 @@
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Api</x:String>
-                        <x:String>Local</x:String>
+                        <x:String>Local EN</x:String>
+                        <x:String>Local SE</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>

@@ -14,7 +14,7 @@ namespace AEAQuiz.Classes
         private readonly static Dictionary<string, string> _languageFileNames = new Dictionary<string, string> 
         {
             { "en", "quizDB.json" },
-            { "sv", "quizDBSV.json" }
+            { "se", "quizDBSV.json" }
         };
 
         public static async Task<QuizJson> Fetch(int? category, QType type, Difficulty difficulty, int amount, string language = "en")

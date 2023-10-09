@@ -42,7 +42,7 @@ namespace AEAQuiz.Classes
 
         public static string SelectedQuestionDB
         {
-            get { return Preferences.Default.Get(nameof(SelectedQuestionDB), "local"); }
+            get { return Preferences.Default.Get(nameof(SelectedQuestionDB), "local EN"); }
             set { Preferences.Default.Set(nameof(SelectedQuestionDB), value); }
         }
     }

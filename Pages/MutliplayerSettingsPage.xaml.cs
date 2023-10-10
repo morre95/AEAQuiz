@@ -18,8 +18,19 @@ public partial class MutliplayerSettingsPage : ContentPage
         var player = sender as Button;
         if (player != null)
         {
+            string name;
+            if (string.IsNullOrEmpty(playerName.Text))
+            {
+                name = "Player " + playersCount;
+                DebugLabel.Text = $"I can not add an empty string. So I added {name} as username";
+            } 
+            else
+            {
+                name = playerName.Text;
+            }
+                
             Color color = MyColors.GetColorBy(playersCount - 1);
-            players.Add(new Player(playerName.Text, color));
+            players.Add(new Player(name, color));
             playersCount++;
             playerName.Text = "Player " + playersCount;
             playerName.Focus();
@@ -38,6 +49,11 @@ public partial class MutliplayerSettingsPage : ContentPage
                 {
                     PlayersListLabel.Text += ", ";
                 }
+            }
+
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                playerName.SelectionLength = playerName.Text.Length;
             }
 
         }
@@ -62,11 +78,12 @@ public partial class MutliplayerSettingsPage : ContentPage
         }
     }
 
-    private async void OnEntryFocus(object sender, FocusEventArgs e)
+    private void OnEntryFocus(object sender, FocusEventArgs e)
     {
         var entry = sender as Entry;
 
         entry.CursorPosition = 0;
         entry.SelectionLength = entry.Text == null ? 0 : entry.Text.Length;
+        Debug.WriteLine(entry.Text);
     }
 }

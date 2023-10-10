@@ -19,7 +19,7 @@
                 Margin="10"
                 Clicked="AboutBtn_Clicked" />
             <!--<Image 
-                Source="menu.png"a<ka
+                Source="menu.png"
                 HorizontalOptions="End"
                 VerticalOptions="Start"
                 WidthRequest="30"

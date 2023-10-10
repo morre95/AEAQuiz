@@ -3,19 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AEAQuiz.Pages.GamePage"
              Shell.NavBarIsVisible="False" >
-    <ScrollView>
+    
         <ContentPage.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#FF5733" Offset="0.0"/>
                 <GradientStop Color="#3333FF" Offset="1.0"/>
             </LinearGradientBrush>
         </ContentPage.Background>
-
+    <ScrollView >
 
         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
             <VerticalStackLayout Margin="1,1,1,25">
-                <Label x:Name="PlayerName" Margin="0,0,0,20" FontSize="28" MinimumWidthRequest="120"/>
-                <Button x:Name="NextPlayerBtn" Text="Next Player" IsVisible="false" WidthRequest="120" Clicked="OnNextPlayerClick" Padding="5" />
+                <Label x:Name="PlayerName" Margin="0,0,0,20" FontSize="28" MinimumWidthRequest="320" />
+                <Button x:Name="NextPlayerBtn" Text="Next Player" IsVisible="false" WidthRequest="320" Clicked="OnNextPlayerClick" Padding="5" />
             </VerticalStackLayout>
 
             <StackLayout x:Name="StackLayoutQ" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">

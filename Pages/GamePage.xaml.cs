@@ -287,16 +287,16 @@ namespace AEAQuiz.Pages
                     string winnerText;
                     if (winners.Count < 2) 
                     {
-                        winnerText = $"Winner: {winner.Name}";
+                        winnerText = $"Winner: {winner.Name} with {winner.NumberOfPoints} p";
                     }
                     else
                     {
-                        winnerText = $"Winners: {string.Join(", ", winners.Select(x => x.Name).ToArray())}";
+                        winnerText = $"Winners: {string.Join(", ", winners.Select(x => x.Name).ToArray())} with {winner.NumberOfPoints} p";
                     }
 
                     foreach (var x in orderdPlayers)
                     {
-                        answerObjects.Add(new { Name = x.Name, NumberOfRightAswer = x.NumberOfRightAswer, NumberOfPoints = x.NumberOfPoints });
+                        answerObjects.Add(new { Name = x.Name, NumberOfRightAswer = x.NumberOfRightAswer, NumberOfPoints = x.NumberOfPoints, Color = x.Color });
                     }
 
                     await Navigation.PushAsync(new ResultPage(winnerText, answerObjects, numberOfQuestions));

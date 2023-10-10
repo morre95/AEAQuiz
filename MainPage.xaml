@@ -13,13 +13,31 @@
 
     <FlexLayout Direction="Column">
         <VerticalStackLayout>
-            <Button Text="About" 
+            <!--<Button Text="About"
                 HorizontalOptions="End" 
                 VerticalOptions="Start" 
                 Margin="10"
-                Clicked="AboutBtn_Clicked" />
+                Clicked="AboutBtn_Clicked" />-->
+            <ImageButton 
+                Source="menu.png"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                WidthRequest="30"
+                Margin="10"
+                ToolTipProperties.Text="Right Click Me">
+                <FlyoutBase.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Settings"/>
+                        <MenuFlyoutItem 
+                            Text="About"
+                            Clicked="AboutBtn_Clicked" />
+                    </MenuFlyout>
+                </FlyoutBase.ContextFlyout>
+            </ImageButton>
+            
         </VerticalStackLayout>
         <VerticalStackLayout Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center">
+
             <Image
                 Source="aea_logo.png"
                 SemanticProperties.Description="aea logo"

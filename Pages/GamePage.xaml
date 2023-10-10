@@ -10,12 +10,12 @@
                 <GradientStop Color="#3333FF" Offset="1.0"/>
             </LinearGradientBrush>
         </ContentPage.Background>
-    <ScrollView >
+    <ScrollView>
 
         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
             <VerticalStackLayout Margin="1,1,1,25">
-                <Label x:Name="PlayerName" Margin="70,0,0,20" FontSize="28" MinimumWidthRequest="320" />
-                <Button x:Name="NextPlayerBtn" Text="Next Player" IsVisible="false" WidthRequest="320" Clicked="OnNextPlayerClick" Padding="5" />
+                <Label x:Name="PlayerName" Margin="0,0,0,20" FontSize="28" HorizontalOptions="Center" />
+                <Button x:Name="NextPlayerBtn" Text="Next Player" IsVisible="false" Clicked="OnNextPlayerClick" Padding="5" />
             </VerticalStackLayout>
 
             <StackLayout x:Name="StackLayoutQ" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">

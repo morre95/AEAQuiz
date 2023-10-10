@@ -48,6 +48,12 @@ namespace AEAQuiz.Pages
                 NextPlayerBtn.WidthRequest = 220;
             }
 
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                PlayerName.MinimumWidthRequest = 320;
+                NextPlayerBtn.WidthRequest = 320;
+            }
+
             _ = LoadTriviaQuestion();
         }
 

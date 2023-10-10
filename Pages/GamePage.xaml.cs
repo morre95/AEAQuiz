@@ -52,6 +52,7 @@ namespace AEAQuiz.Pages
             {
                 PlayerName.MinimumWidthRequest = 320;
                 NextPlayerBtn.WidthRequest = 320;
+                PlayerName.HorizontalTextAlignment = TextAlignment.Center;
             }
 
             _ = LoadTriviaQuestion();

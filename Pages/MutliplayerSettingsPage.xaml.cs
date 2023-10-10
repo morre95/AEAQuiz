@@ -53,7 +53,7 @@ public partial class MutliplayerSettingsPage : ContentPage
 
             if (DeviceInfo.Platform == DevicePlatform.Android)
             {
-                playerName.SelectionLength = playerName.Text.Length;
+                SelectText(playerName);
             }
 
         }
@@ -72,7 +72,8 @@ public partial class MutliplayerSettingsPage : ContentPage
             }
             else
             {
-                // TODO: Andriod stänger inte tangentbordet 
+                playerName.IsEnabled = false;
+                playerName.IsEnabled = true;
                 await Navigation.PushAsync(new GameSettingsPage(JsonConvert.SerializeObject(players)));
             }
         }
@@ -82,8 +83,12 @@ public partial class MutliplayerSettingsPage : ContentPage
     {
         var entry = sender as Entry;
 
+        SelectText(entry);
+    }
+
+    private void SelectText(Entry entry)
+    {
         entry.CursorPosition = 0;
         entry.SelectionLength = entry.Text == null ? 0 : entry.Text.Length;
-        Debug.WriteLine(entry.Text);
     }
 }

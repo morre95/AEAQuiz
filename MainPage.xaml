@@ -11,15 +11,15 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
-    <FlexLayout Direction="Column">
+    <VerticalStackLayout>
         <VerticalStackLayout>
-            <!--<Button Text="About"
+            <Button Text="About"
                 HorizontalOptions="End" 
                 VerticalOptions="Start" 
                 Margin="10"
-                Clicked="AboutBtn_Clicked" />-->
-            <ImageButton 
-                Source="menu.png"
+                Clicked="AboutBtn_Clicked" />
+            <!--<Image 
+                Source="menu.png"a<ka
                 HorizontalOptions="End"
                 VerticalOptions="Start"
                 WidthRequest="30"
@@ -33,7 +33,7 @@
                             Clicked="AboutBtn_Clicked" />
                     </MenuFlyout>
                 </FlyoutBase.ContextFlyout>
-            </ImageButton>
+            </Image>-->
             
         </VerticalStackLayout>
         <VerticalStackLayout Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center">
@@ -63,6 +63,6 @@
                 Clicked="MultiplayerBtn_Clicked" />
 
         </VerticalStackLayout>
-    </FlexLayout>
+    </VerticalStackLayout>
 
 </ContentPage>

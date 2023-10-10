@@ -45,11 +45,6 @@ namespace AEAQuiz.Pages
 
             if (DeviceInfo.Platform == DevicePlatform.Android)
             {
-                NextPlayerBtn.WidthRequest = 220;
-            }
-
-            if (DeviceInfo.Platform == DevicePlatform.Android)
-            {
                 PlayerName.MinimumWidthRequest = 320;
                 NextPlayerBtn.WidthRequest = 320;
                 PlayerName.HorizontalTextAlignment = TextAlignment.Center;

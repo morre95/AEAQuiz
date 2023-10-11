@@ -208,6 +208,7 @@ namespace AEAQuiz.Pages
                 {
                     playerCountIndex++;
                 }
+                
                 _ = ResultOrNextCheck();
             });
         }
@@ -217,9 +218,6 @@ namespace AEAQuiz.Pages
             var selectedButton = sender as Button;
             if (selectedButton != null)
             {
-                timer?.Dispose();
-                displayTimer?.Dispose();
-
                 foreach (var buttons in buttonsToDelete)
                 {
                     buttons.IsEnabled = false;
